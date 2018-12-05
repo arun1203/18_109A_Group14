@@ -13087,6 +13087,53 @@ div#notebook {
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
+ <style type="text/css">
+        nav.sitenav ul {
+            list-style: none;
+        }
+        
+        nav.sitenav li {
+            display: inline-block;
+            width: 8em;
+            text-align: center;
+        }
+        
+        nav.sitenav a {
+            display: block;
+            font-weight: bold;
+        }
+        
+        nav.sitenav a:link,
+        nav.sitenav a:visited,
+        nav.sitenav a:hover,
+        nav.sitenav a:active {
+            color: green;
+            text-decoration: none;
+            border-bottom: thin solid transparent;
+        }
+        
+        nav.sitenav a:hover {
+            border-bottom: thin solid green;
+        }
+        
+        nav.sitenav li.youarehere a {
+            background-color: #cdfecd;
+            border-bottom: thin solid green;
+        }
+        
+        section,
+        aside,
+        article,
+        footer {
+            clear: both;
+        }
+        
+        footer {
+            border-top: thin solid green;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/unsemantic-grid-responsive-tablet.css"/>
+
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
@@ -13110,6 +13157,17 @@ div#notebook {
     </script>
     <!-- End of mathjax configuration --></head>
 <body>
+<div class="grid-100">
+    <nav class="sitenav">
+        <ul>
+            <li><a href="/project_draft1/index.html">Home</a></li>
+            <li><a href="/project_draft1/data_cleaning.html">Data Cleaning</a></li>
+            <li><a href="/project_draft1/data_processing_and_EDA.html">EDA</a></li>
+            <li><a href="#">Menu3</a></li>
+            <li><a href="#">Menu4</a></li>
+        </ul>
+    </nav>
+    </div>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
