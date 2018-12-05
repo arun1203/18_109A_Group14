@@ -3,7 +3,22 @@
 
 <head>
     <title>Project Group 14</title>
-    <meta charset="utf-8" />    
+    <meta charset="utf-8" />
+  <!-- mathjax config similar to math.stackexchange -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        displayAlign: 'center',
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+    </script>
+    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+    
     <style type="text/css">
         nav.sitenav ul {
             list-style: none;
@@ -56,14 +71,14 @@
  <div class="grid-container">     
     <div class="grid-100">
      <header>
-        <h1>Vegetables</h1></header>
+        <h1>Project Group 14 - CS109 A - Fall 2018</h1></header>
      </div>
      <div class="grid-100">
     <nav class="sitenav">
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="/project_draft1/data_cleaning.html">Data Cleaning</a></li>
-            <li><a href="/project_draft2/data_processing_and_EDA.html">EDA</a></li>
+            <li><a href="/project_draft1/data_processing_and_EDA.html">EDA</a></li>
             <li><a href="#">Menu3</a></li>
             <li><a href="#">Menu4</a></li>
         </ul>
@@ -71,25 +86,41 @@
      </div>
      <div class="grid-25">
     <aside>
-        <h3>Project Description</h3>
+        <h3>Team Members</h3>		
         <ul>
-            <li>Soko radicchio bunya nuts gram dulse silver beet parsnip napa cabbage lotus root sea lettuce brussels sprout cabbage.</li>
-            <li>catsear cauliflower garbanzo yarrow salsify chicory garlic bell pepper napa cabbage lettuce tomato kale arugula melon sierra leone bologi rutabaga tigernut.</li>
-            <li>Sea lettuce gumbo grape kale kombu cauliflower salsify kohlrabi okra sea lettuce broccoli celery lotus root carrot winter purslane turnip greens garlic.</li>
-            <li>Jícama garlic courgette coriander radicchio plantain scallion cauliflower fava bean desert raisin spring onion chicory bunya nuts.</li>
-            <li>Sea lettuce water spinach gram fava bean leek dandelion silver beet eggplant bush tomato.</li>
+            <li>1. Gena Gibson </li>
+            <li>2. Roland Schiebel </li>
+            <li>3. Oyvind Sporck</li>
+            <li>4. Arun Reddy D</li>            
         </ul>
     </aside>
      </div>
      <div class="grid-50">
     <article>
-        <h2>Growing Herbs Indoors</h2>
+        <h2>Project Description</h2>
         <section>
-            <h3>Basil</h3>
-            <p><img alt="basil" src="images/basil-250.jpg" style="float: right;" />Chaya tepary bean elephant garlic swede sweet pepper tomato horseradish water chestnut drumstick good king henry mung bean. Bell pepper ahipa azuki bean bitter melon garden rocket chickpea, canna, swede. Tepary bean mung bean yacón, carrot catsear. Carrot ricebean avocado brussels sprout watercress lagos bologi bamboo shoot, garbanzo epazote. Lima Bean kohlrabi burdock - ahipa. Epazote camas bok choy - celtuce corn salad fiddlehead fat hen. Sorrel cardoon broccoli rabe chicory.</p>
-
-            <p>Moth bean beetroot kai-lan. Guar summer purslane courgette elephant garlic chinese mallow turnip greens fluted pumpkin horse gram. Bitter melon celery, sea kale lima bean broadleaf arrowhead, taro. Common bean bitter gourd cassava good king henry chaya rutabaga good king henry, kurrat canna - yardlong bean kale. Ceylon spinach; fava bean pigeon pea potato squash, canna mung bean!
-            </p>
+            <h3>Problem Statement</h3>
+            <p>LendingClub is the first peer-to-peer lending network to register with the Securities and Exchange Commission (SEC). The LendingClub platform connects borrowers to investors and facilitates the
+			   payment of loans ranging from $1,000 to $40,000. The details of how this marketplace works are available on LendingClub’s website [1]. The basic idea is that borrowers apply for a loan on the
+			   LendingClub Marketplace. Investors can review the loan applications, along with risk analysis provided by LendingClub, to determine how much of the loan request they are willing to fund.
+               When the loan is fully funded, the borrower will receive the loan. Investors can also choose to have loans selected manually or automatically via a specified strategy. Loan details such as grade
+               or subgrade, loan purpose, interest rate, and borrower information can all be used to evaluate a loan for possible investment.
+			</p>
+			<p>As part of this marketplace, LendingClub makes a significant amount of the loan data that is available to investors available online. Investors can make their own investment decisions and
+               strategies based on the information provided by LendingClub.
+			</p>
+			<p>
+			As with other types of loan and investment platforms, Lending Club is the site of possible discrimination or unfair lending practices. Note that Lending Club is an "Equal Housing Lender"
+                (logo displayed in the bottom of each page of the website) which means that "the bank makes loans without regard to race, color, religion, national origin, sex, handicap, or familial status."
+				 Such policies in the past have failed to stop discrimination, most publicly against loan applicants of color, especially African American applicants. Racial discrimination has continued in
+                new forms following the federal Fair Housing Act; investors have adapted their approach to fit within the guidelines of the law while maintaining results with damaging and immoral effects on
+                communities of color” [3]. Other systems do not explicitly discriminate against minorities but enable practices such as refusing loans from specific zip codes that in effect harm minority applicants.
+		
+			</p>
+			<p>
+			With this in mind, your models should also address the issue of discrimination in loans and investments, and proactive checks should consider potential unintended consequences of a given
+            strategy or model. Some concepts you may find useful in addressing fairness are Statistical Parity, Conditional Parity, and Predictive Equality.
+			</p>
         </section>
         <section>
             <h3>Mint</h3>
