@@ -113,6 +113,16 @@
 			<li>Since the model will be used to inform an investment strategy going forwards, the most relevant data are from recent years.</li>
 			</ul>
 			</p>
+			<p>The dataset is reasonably clean and we were able to gap-fill most of the missing data with sensible values and minimise dropping of rows. This suggests that there are no issues of potential biases due to dropping rows with missing data.  In summary, the following data cleaning operations were carried out:
+			<ul>
+			<li><b>Removal of columns to prevent data leakage,</b> i.e. removing those that contained information that would only become available after the loan has been issued.  Keeping such variables would lead to artificially good model predictions, and hence it is important to remove them. We contacted the Lending Club help desk in order to indicate which columns were updated monthly and which were available at the time of application. Only variables that are available at the time of the loan application were kept. Examples of removed columns include: recoveries, collection_recovery_fee, total_pymnt, columns starting with next_ or last_ etc.</li>
+			<li><b>Removal of uninformative columns,</b> e.g. those that contained no data or single values (e.g. id, member_id, url)</li>
+			<li><b>Filling missing values,</b> using sensible assumptions. For instance, missing data was typically filled with zeros unless this did not make sense (for instance, all of the mths_since... variables have many missing values. We cannot replace NaNs with 0's since this would suggest that there had been a recent occurrence. Therefore these are re-coded as binary variables with 0 indicating no occurrence and 1 indicating an occurrence).</li>
+			<li><b>Recoding the data,</b> for example, converting employment length to numeric, recoding binary variables as 0, 1.</li>
+			</ul>
+			</p>
+			<p>The <i><b>loan status</b></i>, is the target predictor for our current research question.  This includes 7 statuses: current, fully paid, charged off, late (31 - 120 days), late (16 - 30 days), in grace period and default.  Due to the need to ensure that we compare on a like-for-like basis, we only consider loans that have completed their full life cycle (i.e. loan status of <b>“fully paid”</b> or <b>“charged off”</b>), since the status of current loans may change over time.
+			</p>
 			
         </section>
     </article>
