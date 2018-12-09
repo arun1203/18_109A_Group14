@@ -122,9 +122,29 @@
 			</ul>
 			</p>
 			<p>The <i><b>loan status</b></i>, is the target predictor for our current research question.  This includes 7 statuses: current, fully paid, charged off, late (31 - 120 days), late (16 - 30 days), in grace period and default.  Due to the need to ensure that we compare on a like-for-like basis, we only consider loans that have completed their full life cycle (i.e. loan status of <b>“fully paid”</b> or <b>“charged off”</b>), since the status of current loans may change over time.
-			</p>
-			
+			</p>			
         </section>
+		<section>
+			<h3>Summary of noteworthy findings from the EDA</h3>
+			<p>As described above, we are focusing on the dataset from 2016 and 2017. That dataset has about 90 predictors and 334,000 observations. The ratio of “Fully paid” to “Charged off” loans in the original set is about 3:1 which makes it somewhat imbalanced. We will consider that by balancing the data for the modelling process. </p>
+			<p>
+			For the purposes of EDA, however, we kept the original dataset. We ran a correlation analysis to see which predictors correlate and we also ran several modelling algorithms (LassoCV, Decision Tree and Random Forest) that would help us find the most significant predictors in the dataset. Below are some examples of the most important predictors that had a higher impact on the target variable <b>loan status</b>:
+			<ul>
+			<li>Interest Rate</li>
+			<li>Sub Grade (a rating that Lending Club assigned to the loan)</li>
+			<li>Average Current Balance (of all accounts)</li>
+			<li>FiCo score (the borrower’s credit score)</li>
+			<li>Dti (the debt to income ratio)</li>
+			<li>Installment (the monthly payment owed by the borrower if the loan originates)</li>
+			<li>Employment length (in years)</li>
+			<li>Term (36 or 60 months)</li>
+			<li>Revolving line utilization rate (the amount of credit the borrower is using relative to all available revolving credit)</li>
+			<li>Loan amount</li>
+			<li>Annual income</li>
+			<li>Home ownership</li>
+			</ul>
+			</p>
+		</section>
     </article>
      </div>
      <div class="grid-25">
