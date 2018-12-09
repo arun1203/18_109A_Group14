@@ -100,10 +100,20 @@
 			</p>			
         </section>
         <section>
-            <h3>Project Goal</h3>
-            <p>Propose, build, and evaluate a data-driven model to power your investment strategy as if you were working as a data scientist advising a LendingClub investor. Your model should
-               consider fairness and interpretability without substantial losses to efficacy.
+            <h3>Description of the data and initial cleaning</h3>
+            <p>LendingClub provides two datasets: Loan data (for all loans issued) and Declined loan data (loan applications that did not meet LendingClub’s credit underwriting policy.
             </p>
+			<p>The Loan data covers the period from 2007 to Q2 2018. It contains around 150 variables, details of which are provided in a data dictionary. 
+			</p>
+			<p>The Declined loan data covers the same period; however, it only contains nine predictors and refers to applications that do not make it onto the LendingClub platform. This data is therefore not considered relevant to the research question, since investors would not consider these applicants in their strategies. 
+			</p>
+			<p>We have elected to focus on the data for 2016 and 2017 for the purposes of training the model. This is because:
+			<ul>
+			<li>The variables included in the datasets have changed over time, meaning that features in the more recent datasets are not necessarily available in the older datasets.</li>
+			<li>Since the model will be used to inform an investment strategy going forwards, the most relevant data are from recent years.</li>
+			</ul>
+			</p>
+			
         </section>
     </article>
      </div>
