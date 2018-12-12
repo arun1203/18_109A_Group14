@@ -93,43 +93,51 @@
                 <p>Considering we have only looked at the 2016 - 2017 data and due to the reasons explained in our <a href="index.html">initial project approach</a>, we arrived at the following conclusions:</p>
 
                 <h4>Important investment features</h4>
-                <p>If an investor were to decide to invest their money in LendigClub, some of the most important features to consider when doing so, would be variables like:</p>
-                <ul>
-                    <li>
-                        grade and sub_grade (LendingClub's risk rating of a loan)
-                    </li>
-                    <li>
-                        interest rate
-                    </li>
-                    <li>
-                        debt to income ratio
-                    </li>
-                    <li>
-                        average current balance
-                    </li>
-                    <li>
-                        installment
-                    </li>
-                    <li>
-                        FiCo credit score
-                    </li>
-                    <li>
-                        employment length
-                    </li>
-                </ul>
+                <p>If an investor were to decide to invest their money in LendigClub, some of the most important features to consider when doing so, would be variables like the ones below, which resulted from running for example a random forest and gradient boosting calculation and looking at the relative importance of the features:</p>
+                <p><img alt="image11" src="images/image11.png" class="img-fluid img-thumbnail rounded" width=80% /></p>
 
                 <h4>Investment strategies</h4>
-                <p>From the calculations under <a href="models.html">"Expected Returns"</a> we can observe several interesting things regarding potential investment strategies.</p>
-                <ol>
-                    <li>
-                        If a potential investor were to invest <b>$100</b> in every one of the 334,000 loans we looked at, he would <b>lose money</b> overall, mostly due to the loans with <b>high interest rates</b> (higher than 10%).
-                    </li>
-                    <li>
-                        Investors would <b>lose on average 55%</b> of their invested capital if they invested in a loan that was <b>charged off</b>. However, if they invested in a loan that was <b>fully paid back</b>, they would still only gain about <b>10.4%</b> of their invested capital. Even considering the fact that they are about 3 times more likely to make a profit (since 3 times as many loans get paid back), it would still be a <b>negative return</b> in the long run, as their cumulated gains wouldn't make up for the cumulated losses.
-                    </li>
-                </ol>
+                <p>From the calculations under <a href="Model tuning and selection v7.html" target="_blank">"Expected Returns"</a> we can observe several interesting things. For instance...</p>
 
-                <p><b>Under these circumstances, we would not recommend investing in LendingClub loans at this point.</b></p>
+                <p>If a potential investor were to invest <b>$100</b> in every one of the roughly 334,000 loans we looked at, he would <b>lose money</b> overall, mostly due to the loans with <b>high interest rates</b> (higher than 10%). See image below.
+                </p>
+                <p><img alt="image12" src="images/image12.png" class="img-fluid img-thumbnail rounded" width=80% /></p>
+                <p>
+                        Investors would <b>lose on average 55%</b> of their invested capital if they invested in a loan that was <b>charged off</b>. However, if they invested in a loan that was <b>fully paid back</b>, they would gain about <b>10.4%</b> of their invested capital on average.
+                </p>
+                <p><img alt="image13" src="images/image13.png" class="img-fluid img-thumbnail rounded" width=80% /></p>
+
+                We also did some calculations on potential investment strategies. Based on that, we've created 3 scenarios:</p>
+                <ol>
+                    <li>An investor invests $100 in every one of the 334,000 loans</li>
+                    <li>An investor invests $100 in 1000 random loans</li>
+                    <li>An investor invests $100 in the top 1000 loans based on our <a href="Model tuning and selection v7.html" target="_blank">prediction model</a></li>
+                </ol>
+                <p>Those 3 investment strategies would then lead to the following results:</p>
+                <ul>
+                    <li>The investor who invested 100 USD in every possible loan would need to invest $15,284,048 and would end up with a loss of $1,397,878 on December 31th 2018, which is a loss of 9.1%</li>
+
+                    <li>The investor who invested 100 USD in 1000 random loans would need to invest about $43,753 and would still end up with a $5,898 loss on December 31th 2018, which is a 13.4% loss.</li>
+
+                    <li>The investor who invested 100 USD in top 1000 loans according to our model will need to invest $41,837 overall and would end up with a profit of $3,920 on December 31th 2018, which equals 9.4%</li>
+                </ul>
+                    <p>Now, even though it looks like strategy 1 loses less percentage wise than strategy 2, the first investor would've had to invest almost 355 times more money than the second, which is quite significant. If that second investor invested the same amount the first one invested but in our 1000 best loans, that investor would end up with a profit of $1,391,140 on December 31th 2018.</p>
+
+                    <p>Please find more details on these calculation at the end of our <a href="Model tuning and selection v7.html" target="_blank">models notebook</a>.</p>
+
+                <p>On top of that, we did some calculations on the investor's Cash-Flow across the 2017 - 2018 timeframe. The graphs will show how the cash-flow is spread out over that timeframe. As one can see, the investor needs to put out an outlay at first but will then gradually receive money back as interest and installments accrue, as well as when loans gets paid back.</p>
+
+                However, there are some limitations in the dataset that required us to make a few assumptions:
+                <ol>
+                    <li>All loans are paid out the first of the month </li>
+                    <li>The loans are paid back in daily installments as long as the loan is running </li>
+                    <li>The loans pay the investor daily interest </li>
+                    <li>Fees, taxes, inflation and time-value of money is not included in the calculations </li>
+                </ol>
+                <p>Please find the graphs of the 3 investor's Cash-Flows over the entire time period below.</p>
+                <p><img alt="image14" src="images/image14.png" class="img-fluid img-thumbnail rounded" width=80% /></p>
+                <p><img alt="image15" src="images/image15.png" class="img-fluid img-thumbnail rounded" width=80% /></p>
+                <p><img alt="image16" src="images/image16.png" class="img-fluid img-thumbnail rounded" width=80% /></p>
 
                 <h4>Fairness metrics</h4>
                 We implemented a selection of the fairness metrics from the IBM algorithm directly, which include the following metrics for each model:
@@ -151,7 +159,7 @@
                 <p>On the other hand, when looking at <b>race</b>, even though the LendingClub data does not contain any race related information directly, our model might still <b>indirectly discriminate against race based on the location</b> (zip-code) of a loan applicant.
                 When using data from the US census and aggregating the information up to the 3 first digits of the zip-code, to be compatable with the Lending Club data, we would have additional information about what percentage of the population in that zip-code area is black or any other race.
                 If our model were to reject loans from zip-code xyz and that area has a higher percentage of black population compared to the state or country, this could be considered discrimination.</p>
-                <p><b>This means that there may be a chance our model is indirectly discriminating against a certain race based on the zip-code.</b></p>
+                <p>This shows that there is a <b>tiny racial bias</b> in our model. However, due to the limitations in the dataset, with only the three first digits of the zip-code available, the accuracy is not that good. As these zip-areas are very large, and hence very diverse, that makes it harder to test for bias. Many of these zip-areas include some of Americas poorest areas, but at the same time they include areas with high levels of income, percentage of graduate level degrees and so forth. Hence there are a chance that some zip-codes within these areas are discriminated against, while other zip-codes (areas) are treated positively. But with the lack of granularity in our data, it is not possible to conclude.</p>
 
                 <h4>Further work</h4>
                 <p>There are several ideas we've discussed to further detail our work but due to the limited time and resources was not done in this project.</p>
