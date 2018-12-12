@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Project Group 14</title>
+    <meta charset="utf-8" />
+  <!-- mathjax config similar to math.stackexchange -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        displayAlign: 'center',
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+    </script>
+    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+    <style type="text/css">
+        nav.sitenav ul {
+            list-style: none;
+        }
+
+        nav.sitenav li {
+            display: inline-block;
+            width: 8em;
+            text-align: center;
+        }
+
+        nav.sitenav a {
+            display: block;
+            font-weight: bold;
+        }
+
+        nav.sitenav a:link,
+        nav.sitenav a:visited,
+        nav.sitenav a:hover,
+        nav.sitenav a:active {
+            color: green;
+            text-decoration: none;
+            border-bottom: thin solid transparent;
+        }
+
+        nav.sitenav a:hover {
+            border-bottom: thin solid green;
+        }
+
+        nav.sitenav li.youarehere a {
+            background-color: #cdfecd;
+            border-bottom: thin solid green;
+        }
+
+        section,
+        aside,
+        article,
+        footer {
+            clear: both;
+        }
+
+        footer {
+            border-top: thin solid green;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/unsemantic-grid-responsive-tablet.css"/>
+</head>
+
+<body>
+ <div class="grid-container">
+    <div class="grid-100">
+     <header>
+        <h1>CS109 A - Fall 2018: Project Group 14</h1></header>
+     </div>
+     <div class="grid-100">
+    <nav class="sitenav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+			<li><a href="#">Literature Review</a></li>
+            <li><a href="data_cleaning.html">Data Cleaning</a></li>
+            <li><a href="data_processing_and_EDA.html">EDA</a></li>
+            <li><a href="Model tuning and selection v4.html">Models</a></li>
+            <li class="youarehere"><a href="conclusion.html">Conclusion</a></li>
+        </ul>
+    </nav>
+     </div>
+     <div class="grid-50">
+    <article>
+        <h2>Conclusion</h2>
+        <section>
+            <div class="container first-container">
+                <p>Considering we have only looked at the 2016 - 2017 data and due to the reasons explained in our <a href="index.html">initial project approach</a>, we arrived at the following conclusions:</p>
+
+                <h4>Important investment features</h4>
+                <p>If an investor were to decide to invest their money in LendigClub, some of the most important features to consider when doing so, would be variables like:</p>
+                <ul>
+                    <li>
+                        grade and sub_grade (LendingClub's risk rating of a loan)
+                    </li>
+                    <li>
+                        interest rate
+                    </li>
+                    <li>
+                        debt to income ratio
+                    </li>
+                    <li>
+                        average current balance
+                    </li>
+                    <li>
+                        installment
+                    </li>
+                    <li>
+                        FiCo credit score
+                    </li>
+                    <li>
+                        employment length
+                    </li>
+                </ul>
+
+                <h4>Investment strategies</h4>
+                <p>From the calculations under <a href="models.html">"Expected Returns"</a> we can observe several interesting things regarding potential investment strategies.</p>
+                <ol>
+                    <li>
+                        If a potential investor were to invest <b>$100</b> in every one of the 334,000 loans we looked at, he would <b>lose money</b> overall, mostly due to the loans with <b>high interest rates</b> (higher than 10%).
+                    </li>
+                    <li>
+                        Investors would <b>lose on average 55%</b> of their invested capital if they invested in a loan that was <b>charged off</b>. However, if they invested in a loan that was <b>fully paid back</b>, they would still only gain about <b>10.4%</b> of their invested capital. Even considering the fact that they are about 3 times more likely to make a profit (since 3 times as many loans get paid back), it would still be a <b>negative return</b> in the long run, as their cumulated gains wouldn't make up for the cumulated losses.
+                    </li>
+                </ol>
+
+                <p><b>Under these circumstances, we would not recommend investing in LendingClub loans at this point.</b></p>
+
+                <h4>Fairness metrics</h4>
+                We implemented a selection of the fairness metrics from the IBM algorithm directly, which include the following metrics for each model:
+                <ul>
+                    <li>
+                        <b>Equal opportunity</b>: the difference between the ratio of true positives to positive examples for the protected vs unprotected groups
+                    </li>
+                    <li>
+                        <b>Predictive equality</b>: the difference in accuracy of predictions for the protected vs unprotected groups
+                    </li>
+                    <li>
+                        <b>Statistical parity</b>: the difference in proportion of positive classifications in the protected vs unprotected groups
+                    </li>
+                </ul>
+                <p><u>We decided to look at two potential discriminating factors, <b>age and race</b>.</u></p>
+
+                <p>When looking at <b>age</b>, we assume that the earliest credit line is a good proxy for age and that people get their first line of credit at about <b>18 years</b> old. That would allow an algorithm to derive their <b>current age</b> and make decisions based on that. In this case the results show that <b>our model slightly favours older loan applicants</b> (it has positive values for the fairness metrics).</p>
+
+                <p>On the other hand, when looking at <b>race</b>, even though the LendingClub data does not contain any race related information directly, our model might still <b>indirectly discriminate against race based on the location</b> (zip-code) of a loan applicant.
+                When using data from the US census and aggregating the information up to the 3 first digits of the zip-code, to be compatable with the Lending Club data, we would have additional information about what percentage of the population in that zip-code area is black or any other race.
+                If our model were to reject loans from zip-code xyz and that area has a higher percentage of black population compared to the state or country, this could be considered discrimination.</p>
+                <p><b>This means that there may be a chance our model is indirectly discriminating against a certain race based on the zip-code.</b></p>
+
+                <h4>Further work</h4>
+                <p>There are several ideas we've discussed to further detail our work but due to the limited time and resources was not done in this project.</p>
+                <ul>
+                    <li>
+                    One way of improving predictions would be to stack or combine models instead of only looking at performances of individual models. This has the potential of generating better overall performance but would probably also reduce interpretability of the resulting model. Since interpretability was important in this project, we chose not to follow this approach.
+                    </li>
+                    <li>
+                    Another way to increase performance would've been by using more advanced models like Neural Networks. However, although this may improve performance, it's most likely also going to reduce interpretability and due to the reason explained above, we didn't further follow this Neural Network approach.
+                    </li>
+                    <li>
+                    Regarding fairness, there are many other potential fairness metrics that could be derived from the census data, including different ways to identify race (comparing to the US as a whole rather than the individual state, or looking at different minority groups), as well as other potential sensitive characteristics like poverty and single households. These could be explored in further work.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </article>
+     </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Group 14</title>
+    <meta charset="utf-8" />
+  <!-- mathjax config similar to math.stackexchange -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        displayAlign: 'center',
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+    </script>
+    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/our.css" />
+    <link rel="stylesheet" type="text/css" href="css/unsemantic-grid-responsive-tablet.css"/>
+</head>
+
+<body>
+ <div class="grid-container">
+    <div class="grid-100">
+     <header>
+        <h1>CS109 A - Fall 2018: Project Group 14</h1></header>
+     </div>
+     <div class="grid-100">
+    <nav class="sitenav">
+        <ul>
+            <li class="youarehere"><a href="#">Home</a></li>
+			<li><a href="/18_109A_Group14/literature.html">Literature Review</a></li>
+            <li><a href="/18_109A_Group14/data_cleaning.html">Data Cleaning</a></li>
+            <li><a href="/18_109A_Group14/data_processing_and_EDA.html">EDA</a></li>
+        </ul>
+    </nav>
+     </div>
+     <div class="grid-25">
+    <aside>
+        <h3>Team Members</h3>
+        <ul>
+            <li>Gena Gibson </li>
+            <li>Roland Schiebel </li>
+            <li>Oyvind Sporck</li>
+            <li>Arun Reddy D</li>
+        </ul>
+    </aside>
+     </div>
+     <div class="grid-50">
+    <article>
+        <h2>Project Background</h2>
+        <section>
+            <h3>Overview</h3>
+			<p>LendingClub is a peer-to-peer lending network that launched in 2006. It provides a marketplace that allows potential borrowers to apply for loans. Investors can review these applications and decide how much they are willing to fund - either manually or through an automated strategy. To facilitate this evaluation, LendingClub provides data on the borrower that can be used to determine investment decisions.
+			</p>
+			<p>The first part of the project is to build a model that can be used to inform an investment strategy, which could be used by a LendingClub investor. The research question we have proposed for this part is: Given a loan application, our model will predict whether the applicant will 'pay-off' or 'charge-off' the loan.
+            </p>
+			<p>
+			The second part of the project is to investigate potential issues of discrimination. LendingClub requires that its investors commit to not violating borrower discrimination laws. Thus, it is not permitted to use characteristics such as race, sex, religion etc when deciding whether or not to invest in loans. Although the information reported does not contain demographic information that would allow for direct consideration of these factors, there are other variables that could be used to infer an applicant’s social characteristics, such as their location (correlating with race) or years of employment (correlating with age).  Our proposed approach to this second part of the project is based on a literature review and explained further below.
+			</p>
+
+        </section>
+        <section>
+            <h3>Motivation</h3>
+            <p>The rise of non-performing loans or bad loans is one of the salient features of financial crisis. Bad loans or problematic for economy and society. It is recommended to have required controls in place which help financial institutions to predict and reduce the number of bad loans.
+Our goal in the project is to develop a predictive model to determine the best & fair lending practices for LendingClub. Based on the various number of data inputs (features) our model will predict whether a given loan application will be paid-off or charged -off. To achieve fair and un-biased results we have implemented metrics (as direct calculations) that ensure equal opportunity, predictive equality and statistical parity.
+
+            </p>
+        </section>
+		<section>
+		 <h3>Description of the data and initial cleaning</h3>
+            <p>LendingClub provides two datasets: Loan data (for all loans issued) and Declined loan data (loan applications that did not meet LendingClub’s credit underwriting policy.
+            </p>
+			<p>The Loan data covers the period from 2007 to Q2 2018. It contains around 150 variables, details of which are provided in a data dictionary.
+			</p>
+			<p>The Declined loan data covers the same period; however, it only contains nine predictors and refers to applications that do not make it onto the LendingClub platform. This data is therefore not considered relevant to the research question, since investors would not consider these applicants in their strategies.
+			</p>
+			<p>We have elected to focus on the data for 2016 and 2017 for the purposes of training the model. This is because:
+			<ul>
+			<li>The variables included in the datasets have changed over time, meaning that features in the more recent datasets are not necessarily available in the older datasets.</li>
+			<li>Since the model will be used to inform an investment strategy going forwards, the most relevant data are from recent years.</li>
+			</ul>
+			</p>
+			<p>The dataset is reasonably clean and we were able to gap-fill most of the missing data with sensible values and minimise dropping of rows. This suggests that there are no issues of potential biases due to dropping rows with missing data.  In summary, the following data cleaning operations were carried out:
+			<ul>
+			<li><b>Removal of columns to prevent data leakage,</b> i.e. removing those that contained information that would only become available after the loan has been issued.  Keeping such variables would lead to artificially good model predictions, and hence it is important to remove them. We contacted the Lending Club help desk in order to indicate which columns were updated monthly and which were available at the time of application. Only variables that are available at the time of the loan application were kept. Examples of removed columns include: recoveries, collection_recovery_fee, total_pymnt, columns starting with next_ or last_ etc.</li>
+			<li><b>Removal of uninformative columns,</b> e.g. those that contained no data or single values (e.g. id, member_id, url)</li>
+			<li><b>Filling missing values,</b> using sensible assumptions. For instance, missing data was typically filled with zeros unless this did not make sense (for instance, all of the mths_since... variables have many missing values. We cannot replace NaNs with 0's since this would suggest that there had been a recent occurrence. Therefore these are re-coded as binary variables with 0 indicating no occurrence and 1 indicating an occurrence).</li>
+			<li><b>Recoding the data,</b> for example, converting employment length to numeric, recoding binary variables as 0, 1.</li>
+			</ul>
+			</p>
+			<p>The <i><b>loan status</b></i>, is the target predictor for our current research question.  This includes 7 statuses: current, fully paid, charged off, late (31 - 120 days), late (16 - 30 days), in grace period and default.  Due to the need to ensure that we compare on a like-for-like basis, we only consider loans that have completed their full life cycle (i.e. loan status of <b>“fully paid”</b> or <b>“charged off”</b>), since the status of current loans may change over time.
+			</p>
+        </section>
+		<section>
+			<h3>Summary of noteworthy findings from the EDA</h3>
+			<p>As described above, we are focusing on the dataset from 2016 and 2017. That dataset has about 90 predictors and 334,000 observations. The ratio of “Fully paid” to “Charged off” loans in the original set is about 3:1 which makes it somewhat imbalanced. We will consider that by balancing the data for the modelling process. </p>
+			<p>
+			For the purposes of EDA, however, we kept the original dataset. We ran a correlation analysis to see which predictors correlate and we also ran several modelling algorithms (LassoCV, Decision Tree and Random Forest) that would help us find the most significant predictors in the dataset. Below are some examples of the most important predictors that had a higher impact on the target variable <b>loan status</b>:
+			<ul>
+			<li>Interest Rate</li>
+			<li>Sub Grade (a rating that Lending Club assigned to the loan)</li>
+			<li>Average Current Balance (of all accounts)</li>
+			<li>FiCo score (the borrower’s credit score)</li>
+			<li>Dti (the debt to income ratio)</li>
+			<li>Installment (the monthly payment owed by the borrower if the loan originates)</li>
+			<li>Employment length (in years)</li>
+			<li>Term (36 or 60 months)</li>
+			<li>Revolving line utilization rate (the amount of credit the borrower is using relative to all available revolving credit)</li>
+			<li>Loan amount</li>
+			<li>Annual income</li>
+			<li>Home ownership</li>
+			</ul>
+			</p>
+		</section>
+		<section>
+			<h4>Loan Amount</h4>
+			<p>When we look at the distribution of the loan amount, it shows a preference for requesting values in 5k steps, such as 5k, 10k, 15k, 20k, 35k etc. Most loans are relatively smaller amounts: 50% of all loans are below <span>&#36;</span> 12,500 and 75% below <span>&#36;</span> 20,000</p>
+			<p><img alt="image9" src="images/image9.png" width="500" height="300" style="float: centre;" /></p>
+			<p><img alt="image6" src="images/image6.png" width="150" height="100" style="float: centre;" /></p>
+		</section>
+		<section>
+			<h4>Loan risk (i.e. grades/ratings and interest rates)</h4>
+			<p>When looking at the loan risk (expressed as sub grades), the grades go from A1 (highest/best) to G5 (lowest/worst). We can see a trend that looks like smaller loan amounts are usually rated as a lower risk and larger loans are usually rated riskier, which makes sense.</p>
+			<p><img alt="image7" src="images/image7.png" width="500" height="300" style="float: centre;" /></p>
+			<p>As far as the default by grade goes, it seems that grades A and B are fairly “safe” because the majority of loans in these classes are paid off; however, anything lower than a D (i.e. riskier grade) has a risk of 63-77% of defaulting.</p>
+			<p><img alt="image1" src="images/image1.png" width="475" height="150" style="float: centre;" /></p>
+			<p>Interest rates are higher for lower sub grades, which also makes sense, since the interest rate reflects a measurement of risk and so does the sub grade.</p>
+			<p><img alt="image3" src="images/image3.png" width="500" height="300" style="float: centre;" /></p>
+			<p>This also seems to be confirmed when looking at the rate of defaulted loans by interest rate. The higher the interest rate, the more likely that a loan is going to default (see below).</p>
+			<p><img alt="image8" src="images/image8.png" width="500" height="300" style="float: centre;" /></p>
+		</section>
+		<section>
+			<h4>Loans by States</h4>
+			<p>We can also show that almost 40% of all loans were made in only the top four States: CA, TX, NY and FL.</p>
+			<p><img alt="image4" src="images/image4.png" width="400" height="200" style="float: centre;" /></p>
+			<p>When looking at the average annual incomes, three of these States (CA, NY and TX) are in the top 10, but FL is on rank 27. This leaves the question as to why there have been so many loans in FL?</p>
+			<p><img alt="image10" src="images/image10.png" width="250" height="100" style="float: centre;" /></p>
+			<p>Since 40% of all loans were made in the top four States, we would naturally expect those to have the highest absolute numbers of defaults too. However, we can also look at which States have a higher default rate than the national average of 23.64%. This shows that especially some States in the South like AR, LA, MS and AL are at the top of the list.</p>
+			<p><img alt="image2" src="images/image2.png" width="250" height="100" style="float: centre;" /></p>
+		</section>
+		<section>
+			<h4>Loan Purpose</h4>
+			<p>Another interesting aspect we looked at was the defaulted loans by loan purpose and/or by loan grade. We know that our "base charged off rate", meaning the % of all charged off loans over all loans made in 2016-2017 is 23.64%. This means all loan purposes that show a higher percentage in the table below, are probably at a higher risk than average to default. In this case that is <b>dept_collection, medical, moving, renewable_energy, small_business and other.</b></p>
+			<p><img alt="image5" src="images/image5.png" width="400" height="300" style="float: centre;" /></p>
+		</section>
+
+    </article>
+     </div>
+    </div>
+</body>
+
+</html>

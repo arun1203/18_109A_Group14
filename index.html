@@ -18,23 +18,23 @@
     });
     </script>
     <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-    
+
     <style type="text/css">
         nav.sitenav ul {
             list-style: none;
         }
-        
+
         nav.sitenav li {
             display: inline-block;
             width: 8em;
             text-align: center;
         }
-        
+
         nav.sitenav a {
             display: block;
             font-weight: bold;
         }
-        
+
         nav.sitenav a:link,
         nav.sitenav a:visited,
         nav.sitenav a:hover,
@@ -43,23 +43,23 @@
             text-decoration: none;
             border-bottom: thin solid transparent;
         }
-        
+
         nav.sitenav a:hover {
             border-bottom: thin solid green;
         }
-        
+
         nav.sitenav li.youarehere a {
             background-color: #cdfecd;
             border-bottom: thin solid green;
         }
-        
+
         section,
         aside,
         article,
         footer {
             clear: both;
         }
-        
+
         footer {
             border-top: thin solid green;
         }
@@ -68,7 +68,7 @@
 </head>
 
 <body>
- <div class="grid-container">     
+ <div class="grid-container">
     <div class="grid-100">
      <header>
         <h1>CS109 A - Fall 2018: Project Group 14</h1></header>
@@ -77,20 +77,22 @@
     <nav class="sitenav">
         <ul>
             <li class="youarehere"><a href="#">Home</a></li>
-			<li><a href="/18_109A_Group14/literature.html">Literature Review</a></li>
-            <li><a href="/18_109A_Group14/data_cleaning.html">Data Cleaning</a></li>
-            <li><a href="/18_109A_Group14/data_processing_and_EDA.html">EDA</a></li>            
+			<li><a href="literature.html">Literature Review</a></li>
+            <li><a href="data_cleaning.html">Data Cleaning</a></li>
+            <li><a href="data_processing_and_EDA.html">EDA</a></li>
+            <li><a href="Model tuning and selection v4.html">Models</a></li>
+            <li><a href="conclusion.html">Conclusion</a></li>
         </ul>
     </nav>
      </div>
      <div class="grid-25">
     <aside>
-        <h3>Team Members</h3>		
+        <h3>Team Members</h3>
         <ul>
             <li>Gena Gibson </li>
             <li>Roland Schiebel </li>
             <li>Oyvind Sporck</li>
-            <li>Arun Reddy D</li>            
+            <li>Arun Reddy D</li>
         </ul>
     </aside>
      </div>
@@ -98,20 +100,20 @@
     <article>
         <h2>Project Background</h2>
         <section>
-            <h3>Overview</h3>			
-			<p>LendingClub is a peer-to-peer lending network that launched in 2006. It provides a marketplace that allows potential borrowers to apply for loans. Investors can review these applications and decide how much they are willing to fund - either manually or through an automated strategy. To facilitate this evaluation, LendingClub provides data on the borrower that can be used to determine investment decisions. 
+            <h3>Overview</h3>
+			<p>LendingClub is a peer-to-peer lending network that launched in 2006. It provides a marketplace that allows potential borrowers to apply for loans. Investors can review these applications and decide how much they are willing to fund - either manually or through an automated strategy. To facilitate this evaluation, LendingClub provides data on the borrower that can be used to determine investment decisions.
 			</p>
 			<p>The first part of the project is to build a model that can be used to inform an investment strategy, which could be used by a LendingClub investor. The research question we have proposed for this part is: Given a loan application, our model will predict whether the applicant will 'pay-off' or 'charge-off' the loan.
             </p>
 			<p>
-			The second part of the project is to investigate potential issues of discrimination. LendingClub requires that its investors commit to not violating borrower discrimination laws. Thus, it is not permitted to use characteristics such as race, sex, religion etc when deciding whether or not to invest in loans. Although the information reported does not contain demographic information that would allow for direct consideration of these factors, there are other variables that could be used to infer an applicant’s social characteristics, such as their location (correlating with race) or years of employment (correlating with age).  Our proposed approach to this second part of the project is based on a literature review and explained further below. 
-			</p>	
+			The second part of the project is to investigate potential issues of discrimination. LendingClub requires that its investors commit to not violating borrower discrimination laws. Thus, it is not permitted to use characteristics such as race, sex, religion etc when deciding whether or not to invest in loans. Although the information reported does not contain demographic information that would allow for direct consideration of these factors, there are other variables that could be used to infer an applicant’s social characteristics, such as their location (correlating with race) or years of employment (correlating with age).  Our proposed approach to this second part of the project is based on a literature review and explained further below.
+			</p>
 
         </section>
         <section>
             <h3>Motivation</h3>
             <p>The rise of non-performing loans or bad loans is one of the salient features of financial crisis. Bad loans or problematic for economy and society. It is recommended to have required controls in place which help financial institutions to predict and reduce the number of bad loans.
-Our goal in the project is to develop a predictive model to determine the best & fair lending practices for LendingClub. Based on the various number of data inputs (features) our model will predict whether a given loan application will be paid-off or charged -off. To achieve fair and un-biased results we have implemented metrics (as direct calculations) that ensure equal opportunity, predictive equality and statistical parity.  
+Our goal in the project is to develop a predictive model to determine the best & fair lending practices for LendingClub. Based on the various number of data inputs (features) our model will predict whether a given loan application will be paid-off or charged -off. To achieve fair and un-biased results we have implemented metrics (as direct calculations) that ensure equal opportunity, predictive equality and statistical parity.
 
             </p>
         </section>
@@ -119,9 +121,9 @@ Our goal in the project is to develop a predictive model to determine the best &
 		 <h3>Description of the data and initial cleaning</h3>
             <p>LendingClub provides two datasets: Loan data (for all loans issued) and Declined loan data (loan applications that did not meet LendingClub’s credit underwriting policy.
             </p>
-			<p>The Loan data covers the period from 2007 to Q2 2018. It contains around 150 variables, details of which are provided in a data dictionary. 
+			<p>The Loan data covers the period from 2007 to Q2 2018. It contains around 150 variables, details of which are provided in a data dictionary.
 			</p>
-			<p>The Declined loan data covers the same period; however, it only contains nine predictors and refers to applications that do not make it onto the LendingClub platform. This data is therefore not considered relevant to the research question, since investors would not consider these applicants in their strategies. 
+			<p>The Declined loan data covers the same period; however, it only contains nine predictors and refers to applications that do not make it onto the LendingClub platform. This data is therefore not considered relevant to the research question, since investors would not consider these applicants in their strategies.
 			</p>
 			<p>We have elected to focus on the data for 2016 and 2017 for the purposes of training the model. This is because:
 			<ul>
@@ -138,7 +140,7 @@ Our goal in the project is to develop a predictive model to determine the best &
 			</ul>
 			</p>
 			<p>The <i><b>loan status</b></i>, is the target predictor for our current research question.  This includes 7 statuses: current, fully paid, charged off, late (31 - 120 days), late (16 - 30 days), in grace period and default.  Due to the need to ensure that we compare on a like-for-like basis, we only consider loans that have completed their full life cycle (i.e. loan status of <b>“fully paid”</b> or <b>“charged off”</b>), since the status of current loans may change over time.
-			</p>			
+			</p>
         </section>
 		<section>
 			<h3>Summary of noteworthy findings from the EDA</h3>
@@ -192,9 +194,9 @@ Our goal in the project is to develop a predictive model to determine the best &
 			<p>Another interesting aspect we looked at was the defaulted loans by loan purpose and/or by loan grade. We know that our "base charged off rate", meaning the % of all charged off loans over all loans made in 2016-2017 is 23.64%. This means all loan purposes that show a higher percentage in the table below, are probably at a higher risk than average to default. In this case that is <b>dept_collection, medical, moving, renewable_energy, small_business and other.</b></p>
 			<p><img alt="image5" src="images/image5.png" width="400" height="300" style="float: centre;" /></p>
 		</section>
-		
+
     </article>
-     </div>       
+     </div>
     </div>
 </body>
 

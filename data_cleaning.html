@@ -2,13 +2,57 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>Project Group 14</title>
+<title>Data Cleaning</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
+<style type="text/css">
+        nav.sitenav ul {
+            list-style: none;
+        }
 
+        nav.sitenav li {
+            display: inline-block;
+            width: 8em;
+            text-align: center;
+        }
+
+        nav.sitenav a {
+            display: block;
+            font-weight: bold;
+        }
+
+        nav.sitenav a:link,
+        nav.sitenav a:visited,
+        nav.sitenav a:hover,
+        nav.sitenav a:active {
+            color: green;
+            text-decoration: none;
+            border-bottom: thin solid transparent;
+        }
+
+        nav.sitenav a:hover {
+            border-bottom: thin solid green;
+        }
+
+        nav.sitenav li.youarehere a {
+            background-color: #cdfecd;
+            border-bottom: thin solid green;
+        }
+
+        section,
+        aside,
+        article,
+        footer {
+            clear: both;
+        }
+
+        footer {
+            border-top: thin solid green;
+        }
+    </style>
 <style type="text/css">
     /*!
 *
@@ -9129,15 +9173,15 @@ label {
 }
 /* Flexible box model classes */
 /* Taken from Alex Russell http://infrequently.org/2009/08/css-3-progress/ */
-/* This file is a compatability layer.  It allows the usage of flexible box 
+/* This file is a compatability layer.  It allows the usage of flexible box
 model layouts accross multiple browsers, including older browsers.  The newest,
 universal implementation of the flexible box model is used when available (see
-`Modern browsers` comments below).  Browsers that are known to implement this 
+`Modern browsers` comments below).  Browsers that are known to implement this
 new spec completely include:
 
     Firefox 28.0+
     Chrome 29.0+
-    Internet Explorer 11+ 
+    Internet Explorer 11+
     Opera 17.0+
 
 Browsers not listed, including Safari, are supported via the styling under the
@@ -12519,7 +12563,7 @@ div#pager .ui-resizable-handle {
   background: #f7f7f7;
   border-top: 1px solid #cfcfcf;
   border-bottom: 1px solid #cfcfcf;
-  /* This injects handle bars (a short, wide = symbol) for 
+  /* This injects handle bars (a short, wide = symbol) for
         the resize handle. */
 }
 div#pager .ui-resizable-handle::after {
@@ -13018,7 +13062,7 @@ ul.typeahead-list  > li > a.pull-right {
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
-    
+
 /* Temporary definitions which will become obsolete with Notebook release 5.0 */
 .ansi-black-fg { color: #3E424D; }
 .ansi-black-bg { background-color: #3E424D; }
@@ -13072,67 +13116,20 @@ div#notebook {
   div.cell {
     display: block;
     page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
   }
-  div.output { 
+  div.output_wrapper {
     display: block;
-    page-break-inside: avoid; 
+    page-break-inside: avoid;
+  }
+  div.output {
+    display: block;
+    page-break-inside: avoid;
   }
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
-
- <style type="text/css">
-        nav.sitenav ul {
-            list-style: none;
-        }
-        
-        nav.sitenav li {
-            display: inline-block;
-            width: 8em;
-            text-align: center;
-        }
-        
-        nav.sitenav a {
-            display: block;
-            font-weight: bold;
-        }
-        
-        nav.sitenav a:link,
-        nav.sitenav a:visited,
-        nav.sitenav a:hover,
-        nav.sitenav a:active {
-            color: green;
-            text-decoration: none;
-            border-bottom: thin solid transparent;
-        }
-        
-        nav.sitenav a:hover {
-            border-bottom: thin solid green;
-        }
-        
-        nav.sitenav li.youarehere a {
-            background-color: #cdfecd;
-            border-bottom: thin solid green;
-        }
-        
-        section,
-        aside,
-        article,
-        footer {
-            clear: both;
-        }
-        
-        footer {
-            border-top: thin solid green;
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="css/unsemantic-grid-responsive-tablet.css"/>
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
@@ -13155,48 +13152,51 @@ div#notebook {
         }
     });
     </script>
-	<script>
-  function code_toggle() {
-    if (code_shown){
-      $('div.input').hide('500');
-      $('#toggleButton').val('Show Code')
-    } else {
-      $('div.input').show('500');
-      $('#toggleButton').val('Hide Code')
-    }
-    code_shown = !code_shown
-  }
+    <script>
+      function code_toggle() {
+        if (code_shown){
+          $('div.input').hide('500');
+          $('#toggleButton').val('Show Code')
+        } else {
+          $('div.input').show('500');
+          $('#toggleButton').val('Hide Code')
+        }
+        code_shown = !code_shown
+      }
 
-  $( document ).ready(function(){
-    code_shown=false;
-    $('div.input').hide()
-  });
-</script>
-<script>
-  $(document).ready(function(){
-    $('div.prompt').hide();
-    $('div.back-to-top').hide();
-    $('nav#menubar').hide();
-    $('.breadcrumb').hide();
-    $('.hidden-print').hide();
-  });
-</script>
-<!-- <form action="javascript:code_toggle()"><input type="submit" id="toggleButton" value="Show Code"></form> -->
-    <!-- End of mathjax configuration --></head>
-<body>
-<div class="grid-100">
-<header>
-        <h1>CS109 A - Fall 2018: Project Group 14</h1></header>
-    <nav class="sitenav">
-        <ul>
-            <li><a href="/18_109A_Group14/index.html">Home</a></li>
-			<li><a href="/18_109A_Group14/literature.html">Literature Review</a></li>
-            <li class="youarehere"><a href="/18_109A_Group14/data_cleaning.html">Data Cleaning</a></li>
-            <li><a href="/18_109A_Group14/data_processing_and_EDA.html">EDA</a></li>            
-			<li><form action="javascript:code_toggle()"><input type="submit" id="toggleButton" value="Show Code"></form></li>
-        </ul>
-    </nav>
-    </div>
+      $( document ).ready(function(){
+        code_shown=false;
+        $('div.input').hide()
+      });
+    </script>
+    <script>
+      $(document).ready(function(){
+        $('div.prompt').hide();
+        $('div.back-to-top').hide();
+        $('nav#menubar').hide();
+        $('.breadcrumb').hide();
+        $('.hidden-print').hide();
+      });
+    </script>
+    <!-- <form action="javascript:code_toggle()"><input type="submit" id="toggleButton" value="Show Code"></form> -->
+        <!-- End of mathjax configuration --></head>
+    <body>
+    <div class="grid-100">
+    <header>
+            <h1>CS109 A - Fall 2018: Project Group 14</h1></header>
+        <nav class="sitenav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+    			<li><a href="literature.html">Literature Review</a></li>
+                <li class="youarehere"><a href="data_cleaning.html">Data Cleaning</a></li>
+                <li><a href="data_processing_and_EDA.html">EDA</a></li>
+                <li><a href="Model tuning and selection v4.html">Models</a></li>
+                <li><a href="conclusion.html">Conclusion</a></li>
+    			<li><form action="javascript:code_toggle()"><input type="submit" id="toggleButton" value="Show Code"></form></li>
+            </ul>
+        </nav>
+        </div>
+
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
@@ -13239,57 +13239,57 @@ div#notebook {
 <div class="output_html rendered_html output_subarea output_execute_result">
 <style>
 blockquote { background: #AEDE94; }
-h1 { 
+h1 {
     padding-top: 25px;
     padding-bottom: 25px;
-    text-align: left; 
+    text-align: left;
     padding-left: 10px;
-    background-color: #DDDDDD; 
+    background-color: #DDDDDD;
     color: black;
 }
-h2 { 
+h2 {
     padding-top: 10px;
     padding-bottom: 10px;
-    text-align: left; 
+    text-align: left;
     padding-left: 5px;
-    background-color: #EEEEEE; 
+    background-color: #EEEEEE;
     color: black;
 }
 
 div.exercise {
 	background-color: #ffcccc;
-	border-color: #E9967A; 	
-	border-left: 5px solid #800080; 
+	border-color: #E9967A;
+	border-left: 5px solid #800080;
 	padding: 0.5em;
 }
 div.theme {
 	background-color: #DDDDDD;
-	border-color: #E9967A; 	
-	border-left: 5px solid #800080; 
+	border-color: #E9967A;
+	border-left: 5px solid #800080;
 	padding: 0.5em;
 	font-size: 18pt;
 }
-div.gc { 
+div.gc {
 	background-color: #AEDE94;
-	border-color: #E9967A; 	 
-	border-left: 5px solid #800080; 
+	border-color: #E9967A;
+	border-left: 5px solid #800080;
 	padding: 0.5em;
 	font-size: 12pt;
 }
-p.q1 { 
+p.q1 {
     padding-top: 5px;
     padding-bottom: 5px;
-    text-align: left; 
+    text-align: left;
     padding-left: 5px;
-    background-color: #EEEEEE; 
+    background-color: #EEEEEE;
     color: black;
 }
 header {
    padding-top: 35px;
     padding-bottom: 35px;
-    text-align: left; 
+    text-align: left;
     padding-left: 10px;
-    background-color: #DDDDDD; 
+    background-color: #DDDDDD;
     color: black;
 }
 </style>
@@ -13305,7 +13305,7 @@ header {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -13434,19 +13434,19 @@ header {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read in the data sets from local files</span>
-<span class="n">Q1_2017</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../../data/LoanStats_securev1_2017Q1.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Q2_2017</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../../data/LoanStats_securev1_2017Q2.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Q3_2017</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../../data/LoanStats_securev1_2017Q3.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Q4_2017</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../../data/LoanStats_securev1_2017Q4.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Q1_2017</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/raw/LoanStats_2017Q1.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Q2_2017</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/raw/LoanStats_2017Q2.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Q3_2017</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/raw/LoanStats_2017Q3.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Q4_2017</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/raw/LoanStats_2017Q4.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">Q1_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../../data/LoanStats_securev1_2016Q1.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Q2_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../../data/LoanStats_securev1_2016Q2.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Q3_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../../data/LoanStats_securev1_2016Q3.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Q4_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../../data/LoanStats_securev1_2016Q4.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Q1_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/raw/LoanStats_2016Q1.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Q2_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/raw/LoanStats_2016Q2.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Q3_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/raw/LoanStats_2016Q3.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Q4_2016</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/raw/LoanStats_2016Q4.csv&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13456,7 +13456,7 @@ header {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Concatenate just 2016/2017</span>
@@ -13470,7 +13470,7 @@ header {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Year_2016_2017</span><span class="o">.</span><span class="n">shape</span>
@@ -13486,7 +13486,7 @@ header {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[24]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -13564,15 +13564,14 @@ header {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># New function</span>
 <span class="k">def</span> <span class="nf">clean_up</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-    
+
     <span class="c1"># Explicitly list the columns by cleaning action</span>
-    <span class="n">cols_for_metrics</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;total_pymnt&quot;</span><span class="p">,</span> <span class="s2">&quot;out_prncp&quot;</span><span class="p">,</span> <span class="s2">&quot;collection_recovery_fee&quot;</span><span class="p">,</span> <span class="s2">&quot;recoveries&quot;</span><span class="p">]</span>
-    <span class="n">cols_to_drop</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;member_id&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">,</span> 
+    <span class="n">cols_to_drop</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;member_id&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">,</span>
                     <span class="s2">&quot;hardship_flag&quot;</span><span class="p">,</span> <span class="s2">&quot;hardship_type&quot;</span><span class="p">,</span><span class="s2">&quot;hardship_reason&quot;</span><span class="p">,</span><span class="s2">&quot;hardship_status&quot;</span><span class="p">,</span><span class="s2">&quot;deferral_term&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;hardship_amount&quot;</span><span class="p">,</span><span class="s2">&quot;hardship_start_date&quot;</span><span class="p">,</span><span class="s2">&quot;hardship_end_date&quot;</span><span class="p">,</span><span class="s2">&quot;payment_plan_start_date&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;hardship_length&quot;</span><span class="p">,</span><span class="s2">&quot;hardship_dpd&quot;</span><span class="p">,</span><span class="s2">&quot;hardship_loan_status&quot;</span><span class="p">,</span>
@@ -13580,37 +13579,33 @@ header {
                         <span class="s2">&quot;hardship_last_payment_amount&quot;</span><span class="p">,</span><span class="s2">&quot;disbursement_method&quot;</span><span class="p">,</span><span class="s2">&quot;debt_settlement_flag&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;debt_settlement_flag_date&quot;</span><span class="p">,</span><span class="s2">&quot;settlement_status&quot;</span><span class="p">,</span><span class="s2">&quot;settlement_date&quot;</span><span class="p">,</span><span class="s2">&quot;settlement_amount&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;settlement_percentage&quot;</span><span class="p">,</span><span class="s2">&quot;settlement_term&quot;</span><span class="p">,</span><span class="s1">&#39;policy_code&#39;</span><span class="p">,</span> <span class="s1">&#39;emp_title&#39;</span><span class="p">,</span>
-                        <span class="s1">&#39;verification_status_joint&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s2">&quot;sec_app_earliest_cr_line&quot;</span><span class="p">,</span> <span class="s2">&quot;out_prncp&quot;</span><span class="p">,</span> 
-                        <span class="s2">&quot;out_prncp_inv&quot;</span><span class="p">,</span> <span class="s2">&quot;sec_app_fico_range_low&quot;</span><span class="p">,</span> <span class="s2">&quot;sec_app_fico_range_high&quot;</span><span class="p">,</span>
+                        <span class="s1">&#39;verification_status_joint&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s2">&quot;sec_app_earliest_cr_line&quot;</span><span class="p">,</span> <span class="s2">&quot;out_prncp&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;out_prncp_inv&quot;</span><span class="p">,</span> <span class="s2">&quot;recoveries&quot;</span><span class="p">,</span> <span class="s2">&quot;sec_app_fico_range_low&quot;</span><span class="p">,</span> <span class="s2">&quot;sec_app_fico_range_high&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;last_credit_pull_d&quot;</span><span class="p">,</span> <span class="s2">&quot;last_pymnt_amnt&quot;</span><span class="p">,</span> <span class="s2">&quot;last_pymnt_d&quot;</span><span class="p">,</span> <span class="s2">&quot;next_pymnt_d&quot;</span><span class="p">,</span>
-                         <span class="s2">&quot;total_pymnt_inv&quot;</span><span class="p">,</span> <span class="s2">&quot;total_rec_int&quot;</span><span class="p">,</span> <span class="s2">&quot;total_rec_late_fee&quot;</span><span class="p">,</span> <span class="s2">&quot;total_rec_prncp&quot;</span><span class="p">,</span> 
-                        <span class="s2">&quot;tot_coll_amt&quot;</span><span class="p">,</span> <span class="s1">&#39;tot_cur_bal&#39;</span><span class="p">,</span> <span class="s1">&#39;total_rev_hi_lim&#39;</span><span class="p">,</span> <span class="s1">&#39;tot_hi_cred_lim&#39;</span><span class="p">,</span> <span class="s1">&#39;total_bal_ex_mort&#39;</span><span class="p">,</span> 
+                        <span class="s2">&quot;total_pymnt&quot;</span><span class="p">,</span> <span class="s2">&quot;total_pymnt_inv&quot;</span><span class="p">,</span> <span class="s2">&quot;total_rec_int&quot;</span><span class="p">,</span> <span class="s2">&quot;total_rec_late_fee&quot;</span><span class="p">,</span> <span class="s2">&quot;total_rec_prncp&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;tot_coll_amt&quot;</span><span class="p">,</span> <span class="s1">&#39;tot_cur_bal&#39;</span><span class="p">,</span> <span class="s1">&#39;total_rev_hi_lim&#39;</span><span class="p">,</span> <span class="s1">&#39;tot_hi_cred_lim&#39;</span><span class="p">,</span> <span class="s1">&#39;total_bal_ex_mort&#39;</span><span class="p">,</span>
                         <span class="s1">&#39;total_bc_limit&#39;</span><span class="p">,</span> <span class="s1">&#39;total_il_high_credit_limit&#39;</span><span class="p">,</span>
-                         <span class="s2">&quot;collections_12_mths_ex_med&quot;</span><span class="p">,</span> 
-                        <span class="s2">&quot;sec_app_collections_12_mths_ex_med&quot;</span><span class="p">,</span> <span class="s2">&quot;sec_app_chargeoff_within_12_mths&quot;</span><span class="p">,</span> 
-                        <span class="s2">&quot;sec_app_num_rev_accts&quot;</span><span class="p">,</span> <span class="s2">&quot;sec_app_open_act_il&quot;</span><span class="p">,</span> <span class="s2">&quot;sec_app_open_acc&quot;</span><span class="p">,</span> 
-                        <span class="s2">&quot;sec_app_inq_last_6mths&quot;</span><span class="p">,</span><span class="s1">&#39;last_fico_range_high&#39;</span><span class="p">,</span> <span class="s1">&#39;last_fico_range_low&#39;</span><span class="p">,</span>
-                        <span class="c1"># Additional columns previously removed in the other notebooks</span>
-                        <span class="s1">&#39;mo_sin_old_il_acct&#39;</span><span class="p">,</span> <span class="s1">&#39;mo_sin_old_rev_tl_op&#39;</span><span class="p">,</span> <span class="s1">&#39;mo_sin_rcnt_rev_tl_op&#39;</span><span class="p">,</span> 
-                      <span class="s1">&#39;mo_sin_rcnt_tl&#39;</span><span class="p">,</span> <span class="s1">&#39;funded_amnt&#39;</span><span class="p">,</span> <span class="s1">&#39;funded_amnt_inv&#39;</span><span class="p">,</span> <span class="s1">&#39;num_sats&#39;</span><span class="p">,</span> 
-                   <span class="s1">&#39;num_actv_rev_tl&#39;</span><span class="p">,</span> <span class="s1">&#39;pymnt_plan&#39;</span>
+                        <span class="s2">&quot;collection_recovery_fee&quot;</span><span class="p">,</span> <span class="s2">&quot;collections_12_mths_ex_med&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;sec_app_collections_12_mths_ex_med&quot;</span><span class="p">,</span> <span class="s2">&quot;sec_app_chargeoff_within_12_mths&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;sec_app_num_rev_accts&quot;</span><span class="p">,</span> <span class="s2">&quot;sec_app_open_act_il&quot;</span><span class="p">,</span> <span class="s2">&quot;sec_app_open_acc&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;sec_app_inq_last_6mths&quot;</span><span class="p">,</span><span class="s1">&#39;last_fico_range_high&#39;</span><span class="p">,</span> <span class="s1">&#39;last_fico_range_low&#39;</span>
                    <span class="p">])</span>
     <span class="n">date_cols_to_keep</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;issue_d&#39;</span><span class="p">,</span> <span class="s1">&#39;earliest_cr_line&#39;</span><span class="p">]</span>
-    <span class="n">fill_zero_cols</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;revol_bal_joint&quot;</span><span class="p">,</span> <span class="s2">&quot;annual_inc_joint&quot;</span><span class="p">,</span> <span class="s2">&quot;dti_joint&quot;</span><span class="p">,</span> 
-                          <span class="s1">&#39;inq_last_6mths&#39;</span><span class="p">,</span> <span class="s1">&#39;inq_last_12m&#39;</span><span class="p">,</span> <span class="s1">&#39;open_acc_6m&#39;</span><span class="p">,</span> <span class="s1">&#39;open_act_il&#39;</span><span class="p">,</span> 
+    <span class="n">fill_zero_cols</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;revol_bal_joint&quot;</span><span class="p">,</span> <span class="s2">&quot;annual_inc_joint&quot;</span><span class="p">,</span> <span class="s2">&quot;dti_joint&quot;</span><span class="p">,</span>
+                          <span class="s1">&#39;inq_last_6mths&#39;</span><span class="p">,</span> <span class="s1">&#39;inq_last_12m&#39;</span><span class="p">,</span> <span class="s1">&#39;open_acc_6m&#39;</span><span class="p">,</span> <span class="s1">&#39;open_act_il&#39;</span><span class="p">,</span>
                           <span class="s1">&#39;open_il_12m&#39;</span><span class="p">,</span> <span class="s1">&#39;open_il_24m&#39;</span><span class="p">,</span> <span class="s1">&#39;open_rv_12m&#39;</span><span class="p">,</span><span class="s1">&#39;open_rv_24m&#39;</span><span class="p">,</span> <span class="s1">&#39;inq_fi&#39;</span><span class="p">,</span> <span class="s1">&#39;pct_tl_nvr_dlq&#39;</span><span class="p">,</span>
-                          <span class="s1">&#39;num_accts_ever_120_pd&#39;</span><span class="p">,</span> <span class="s1">&#39;num_actv_bc_tl&#39;</span><span class="p">,</span> <span class="s1">&#39;num_bc_sats&#39;</span><span class="p">,</span> <span class="s1">&#39;num_bc_tl&#39;</span><span class="p">,</span> 
-                          <span class="s1">&#39;num_il_tl&#39;</span><span class="p">,</span> <span class="s1">&#39;num_op_rev_tl&#39;</span><span class="p">,</span> <span class="s1">&#39;num_rev_accts&#39;</span><span class="p">,</span><span class="s1">&#39;num_rev_tl_bal_gt_0&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;num_accts_ever_120_pd&#39;</span><span class="p">,</span> <span class="s1">&#39;num_actv_bc_tl&#39;</span><span class="p">,</span><span class="s1">&#39;num_actv_rev_tl&#39;</span><span class="p">,</span> <span class="s1">&#39;num_bc_sats&#39;</span><span class="p">,</span> <span class="s1">&#39;num_bc_tl&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;num_il_tl&#39;</span><span class="p">,</span> <span class="s1">&#39;num_op_rev_tl&#39;</span><span class="p">,</span> <span class="s1">&#39;num_rev_accts&#39;</span><span class="p">,</span><span class="s1">&#39;num_rev_tl_bal_gt_0&#39;</span><span class="p">,</span><span class="s1">&#39;num_sats&#39;</span><span class="p">,</span>
                           <span class="s1">&#39;num_tl_30dpd&#39;</span><span class="p">,</span><span class="s1">&#39;num_tl_90g_dpd_24m&#39;</span><span class="p">,</span><span class="s1">&#39;num_tl_op_past_12m&#39;</span><span class="p">,</span> <span class="s1">&#39;acc_open_past_24mths&#39;</span><span class="p">,</span>
                           <span class="s2">&quot;num_tl_120dpd_2m&quot;</span><span class="p">,</span> <span class="s2">&quot;pct_tl_nvr_dlq&quot;</span><span class="p">,</span> <span class="s2">&quot;percent_bc_gt_75&quot;</span><span class="p">,</span> <span class="s1">&#39;total_bal_il&#39;</span><span class="p">,</span>
                           <span class="s1">&#39;il_util&#39;</span><span class="p">,</span> <span class="s1">&#39;max_bal_bc&#39;</span><span class="p">,</span> <span class="s1">&#39;all_util&#39;</span><span class="p">,</span> <span class="s1">&#39;total_cu_tl&#39;</span><span class="p">,</span> <span class="s1">&#39;bc_open_to_buy&#39;</span><span class="p">,</span><span class="s1">&#39;bc_util&#39;</span><span class="p">,</span>
                           <span class="s1">&#39;avg_cur_bal&#39;</span><span class="p">,</span> <span class="s2">&quot;sec_app_revol_util&quot;</span><span class="p">,</span> <span class="s2">&quot;sec_app_mort_acc&quot;</span>
  <span class="p">])</span>
-    <span class="n">mths_since_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mths_since_last_record&quot;</span><span class="p">,</span> <span class="s2">&quot;mths_since_recent_bc_dlq&quot;</span><span class="p">,</span> <span class="s2">&quot;mths_since_last_major_derog&quot;</span><span class="p">,</span> 
-                       <span class="s2">&quot;mths_since_recent_revol_delinq&quot;</span><span class="p">,</span> <span class="s2">&quot;mths_since_last_delinq&quot;</span><span class="p">,</span> <span class="s2">&quot;mths_since_recent_inq&quot;</span><span class="p">,</span> 
-                        <span class="s2">&quot;mths_since_rcnt_il&quot;</span><span class="p">,</span> <span class="s2">&quot;mths_since_recent_bc&quot;</span><span class="p">,</span> 
-                       <span class="s2">&quot;sec_app_mths_since_last_major_derog&quot;</span><span class="p">,</span> 
-                       <span class="p">]</span>
+    <span class="n">mths_since_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mths_since_last_record&quot;</span><span class="p">,</span> <span class="s2">&quot;mths_since_recent_bc_dlq&quot;</span><span class="p">,</span> <span class="s2">&quot;mths_since_last_major_derog&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;mths_since_recent_revol_delinq&quot;</span><span class="p">,</span> <span class="s2">&quot;mths_since_last_delinq&quot;</span><span class="p">,</span> <span class="s2">&quot;mths_since_recent_inq&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;mo_sin_old_il_acct&quot;</span><span class="p">,</span> <span class="s2">&quot;mths_since_rcnt_il&quot;</span><span class="p">,</span> <span class="s2">&quot;mths_since_recent_bc&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;sec_app_mths_since_last_major_derog&quot;</span><span class="p">,</span><span class="s2">&quot;mo_sin_old_rev_tl_op&quot;</span><span class="p">,</span> <span class="s2">&quot;mo_sin_old_il_acct&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;mo_sin_old_rev_tl_op&quot;</span><span class="p">,</span> <span class="s2">&quot;mo_sin_rcnt_rev_tl_op&quot;</span><span class="p">,</span> <span class="s2">&quot;mo_sin_rcnt_tl&quot;</span><span class="p">]</span>
 
 
     <span class="c1"># Dictionary for recoding employment length</span>
@@ -13626,13 +13621,13 @@ header {
                 <span class="s2">&quot;9 years&quot;</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span>
                 <span class="s2">&quot;10+ years&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span>
                 <span class="s2">&quot;n/a&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
-    
+
     <span class="c1"># Remove columns to drop</span>
     <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols_to_drop</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
     <span class="c1"># Drop rows which are not equal to &#39;Fully Paid&#39; or &#39;Charged Off&#39;</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;loan_status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Fully Paid&#39;</span><span class="p">,</span> <span class="s1">&#39;Charged Off&#39;</span><span class="p">])]</span>
-    
+
     <span class="c1"># Convert date columns to datetime </span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">date_cols_to_keep</span><span class="p">:</span>
         <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
@@ -13648,6 +13643,7 @@ header {
 
     <span class="c1"># Recode binary variables</span>
     <span class="n">df</span><span class="p">[</span><span class="s2">&quot;term&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot; 36 months&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot; 60 months&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pymnt_plan&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">df</span><span class="p">[</span><span class="s2">&quot;initial_list_status&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;f&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">df</span><span class="p">[</span><span class="s2">&quot;application_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;Individual&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Joint App&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mths_since_cols</span><span class="p">:</span>
@@ -13655,14 +13651,14 @@ header {
 
     <span class="c1"># Change emp_length to numeric</span>
     <span class="n">df</span><span class="p">[</span><span class="s2">&quot;emp_length&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">emp_dict</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;emp_length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;emp_length&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;emp_length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;emp_length&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
     <span class="c1"># Strip out % signs and change to floats</span>
     <span class="n">df</span><span class="p">[</span><span class="s2">&quot;int_rate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;int_rate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)]</span>
     <span class="n">df</span><span class="p">[</span><span class="s2">&quot;int_rate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;int_rate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">df</span><span class="p">[</span><span class="s2">&quot;revol_util&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;revol_util&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)]</span>
     <span class="n">df</span><span class="p">[</span><span class="s2">&quot;revol_util&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;revol_util&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">df</span>
 </pre></div>
 
@@ -13673,7 +13669,7 @@ header {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># show all predictors that still have at least one NaN</span>
@@ -13691,7 +13687,7 @@ header {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">clean_up</span><span class="p">(</span><span class="n">Year_2016_2017</span><span class="p">)</span>
@@ -13704,7 +13700,7 @@ header {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># No missing values</span>
@@ -13737,7 +13733,7 @@ header {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -13760,14 +13756,14 @@ header {
 
 
 <div class="output_text output_subarea ">
-<pre>(334109, 82)</pre>
+<pre>(334109, 88)</pre>
 </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[29]:</div>
+    <div class="prompt output_prompt">Out[24]:</div>
 
 
 
@@ -13791,6 +13787,8 @@ header {
     <tr style="text-align: right;">
       <th></th>
       <th>loan_amnt</th>
+      <th>funded_amnt</th>
+      <th>funded_amnt_inv</th>
       <th>term</th>
       <th>int_rate</th>
       <th>installment</th>
@@ -13800,7 +13798,72 @@ header {
       <th>home_ownership</th>
       <th>annual_inc</th>
       <th>verification_status</th>
-      <th>...</th>
+      <th>issue_d</th>
+      <th>loan_status</th>
+      <th>pymnt_plan</th>
+      <th>purpose</th>
+      <th>zip_code</th>
+      <th>addr_state</th>
+      <th>dti</th>
+      <th>delinq_2yrs</th>
+      <th>earliest_cr_line</th>
+      <th>fico_range_low</th>
+      <th>fico_range_high</th>
+      <th>inq_last_6mths</th>
+      <th>mths_since_last_delinq</th>
+      <th>mths_since_last_record</th>
+      <th>open_acc</th>
+      <th>pub_rec</th>
+      <th>revol_bal</th>
+      <th>revol_util</th>
+      <th>total_acc</th>
+      <th>initial_list_status</th>
+      <th>mths_since_last_major_derog</th>
+      <th>application_type</th>
+      <th>annual_inc_joint</th>
+      <th>dti_joint</th>
+      <th>acc_now_delinq</th>
+      <th>open_acc_6m</th>
+      <th>open_act_il</th>
+      <th>open_il_12m</th>
+      <th>open_il_24m</th>
+      <th>mths_since_rcnt_il</th>
+      <th>total_bal_il</th>
+      <th>il_util</th>
+      <th>open_rv_12m</th>
+      <th>open_rv_24m</th>
+      <th>max_bal_bc</th>
+      <th>all_util</th>
+      <th>inq_fi</th>
+      <th>total_cu_tl</th>
+      <th>inq_last_12m</th>
+      <th>acc_open_past_24mths</th>
+      <th>avg_cur_bal</th>
+      <th>bc_open_to_buy</th>
+      <th>bc_util</th>
+      <th>chargeoff_within_12_mths</th>
+      <th>delinq_amnt</th>
+      <th>mo_sin_old_il_acct</th>
+      <th>mo_sin_old_rev_tl_op</th>
+      <th>mo_sin_rcnt_rev_tl_op</th>
+      <th>mo_sin_rcnt_tl</th>
+      <th>mort_acc</th>
+      <th>mths_since_recent_bc</th>
+      <th>mths_since_recent_bc_dlq</th>
+      <th>mths_since_recent_inq</th>
+      <th>mths_since_recent_revol_delinq</th>
+      <th>num_accts_ever_120_pd</th>
+      <th>num_actv_bc_tl</th>
+      <th>num_actv_rev_tl</th>
+      <th>num_bc_sats</th>
+      <th>num_bc_tl</th>
+      <th>num_il_tl</th>
+      <th>num_op_rev_tl</th>
+      <th>num_rev_accts</th>
+      <th>num_rev_tl_bal_gt_0</th>
+      <th>num_sats</th>
+      <th>num_tl_120dpd_2m</th>
+      <th>num_tl_30dpd</th>
       <th>num_tl_90g_dpd_24m</th>
       <th>num_tl_op_past_12m</th>
       <th>pct_tl_nvr_dlq</th>
@@ -13817,6 +13880,8 @@ header {
     <tr>
       <th>15</th>
       <td>14000.0</td>
+      <td>14000.0</td>
+      <td>14000.0</td>
       <td>1</td>
       <td>15.99</td>
       <td>340.38</td>
@@ -13826,7 +13891,72 @@ header {
       <td>RENT</td>
       <td>43000.0</td>
       <td>Source Verified</td>
-      <td>...</td>
+      <td>2017</td>
+      <td>Charged Off</td>
+      <td>0</td>
+      <td>debt_consolidation</td>
+      <td>367xx</td>
+      <td>AL</td>
+      <td>21.80</td>
+      <td>1.0</td>
+      <td>1995</td>
+      <td>670.0</td>
+      <td>674.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>18537.0</td>
+      <td>99.1</td>
+      <td>8.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>8035.0</td>
+      <td>42.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>18537.0</td>
+      <td>70.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8857.0</td>
+      <td>163.0</td>
+      <td>99.1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>87.5</td>
@@ -13841,6 +13971,8 @@ header {
     <tr>
       <th>20</th>
       <td>5000.0</td>
+      <td>5000.0</td>
+      <td>5000.0</td>
       <td>0</td>
       <td>14.99</td>
       <td>173.31</td>
@@ -13850,7 +13982,72 @@ header {
       <td>RENT</td>
       <td>68000.0</td>
       <td>Not Verified</td>
-      <td>...</td>
+      <td>2017</td>
+      <td>Fully Paid</td>
+      <td>0</td>
+      <td>debt_consolidation</td>
+      <td>945xx</td>
+      <td>CA</td>
+      <td>22.50</td>
+      <td>0.0</td>
+      <td>2003</td>
+      <td>660.0</td>
+      <td>664.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>10276.0</td>
+      <td>90.1</td>
+      <td>18.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>25892.0</td>
+      <td>64.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4261.0</td>
+      <td>69.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>6028.0</td>
+      <td>1124.0</td>
+      <td>90.1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>8.0</td>
+      <td>4.0</td>
+      <td>9.0</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>94.4</td>
@@ -13865,6 +14062,8 @@ header {
     <tr>
       <th>21</th>
       <td>10150.0</td>
+      <td>10150.0</td>
+      <td>10150.0</td>
       <td>0</td>
       <td>7.24</td>
       <td>314.52</td>
@@ -13874,7 +14073,72 @@ header {
       <td>MORTGAGE</td>
       <td>50000.0</td>
       <td>Not Verified</td>
-      <td>...</td>
+      <td>2017</td>
+      <td>Fully Paid</td>
+      <td>0</td>
+      <td>debt_consolidation</td>
+      <td>773xx</td>
+      <td>TX</td>
+      <td>29.60</td>
+      <td>0.0</td>
+      <td>2002</td>
+      <td>740.0</td>
+      <td>744.0</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9.0</td>
+      <td>0.0</td>
+      <td>21845.0</td>
+      <td>56.0</td>
+      <td>21.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>23502.0</td>
+      <td>43.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>11270.0</td>
+      <td>49.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>29908.0</td>
+      <td>13951.0</td>
+      <td>58.2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>8.0</td>
+      <td>5.0</td>
+      <td>10.0</td>
+      <td>4.0</td>
+      <td>9.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>2.0</td>
       <td>100.0</td>
@@ -13889,6 +14153,8 @@ header {
     <tr>
       <th>22</th>
       <td>8400.0</td>
+      <td>8400.0</td>
+      <td>8400.0</td>
       <td>0</td>
       <td>11.39</td>
       <td>276.56</td>
@@ -13898,7 +14164,72 @@ header {
       <td>MORTGAGE</td>
       <td>50000.0</td>
       <td>Source Verified</td>
-      <td>...</td>
+      <td>2017</td>
+      <td>Charged Off</td>
+      <td>0</td>
+      <td>other</td>
+      <td>454xx</td>
+      <td>OH</td>
+      <td>15.63</td>
+      <td>0.0</td>
+      <td>2005</td>
+      <td>675.0</td>
+      <td>679.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>14.0</td>
+      <td>0.0</td>
+      <td>12831.0</td>
+      <td>30.3</td>
+      <td>30.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>38760.0</td>
+      <td>105.0</td>
+      <td>4.0</td>
+      <td>8.0</td>
+      <td>5338.0</td>
+      <td>65.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>10.0</td>
+      <td>12389.0</td>
+      <td>24145.0</td>
+      <td>33.1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>7.0</td>
+      <td>11.0</td>
+      <td>9.0</td>
+      <td>11.0</td>
+      <td>16.0</td>
+      <td>5.0</td>
+      <td>14.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>5.0</td>
       <td>100.0</td>
@@ -13913,6 +14244,8 @@ header {
     <tr>
       <th>26</th>
       <td>10000.0</td>
+      <td>10000.0</td>
+      <td>10000.0</td>
       <td>0</td>
       <td>12.74</td>
       <td>335.69</td>
@@ -13922,7 +14255,72 @@ header {
       <td>OWN</td>
       <td>40000.0</td>
       <td>Not Verified</td>
-      <td>...</td>
+      <td>2017</td>
+      <td>Fully Paid</td>
+      <td>0</td>
+      <td>debt_consolidation</td>
+      <td>324xx</td>
+      <td>FL</td>
+      <td>8.85</td>
+      <td>0.0</td>
+      <td>1997</td>
+      <td>700.0</td>
+      <td>704.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.0</td>
+      <td>0.0</td>
+      <td>9227.0</td>
+      <td>55.9</td>
+      <td>15.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>5454.0</td>
+      <td>56.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>1318.0</td>
+      <td>1691.0</td>
+      <td>79.4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>11.0</td>
+      <td>4.0</td>
+      <td>7.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>100.0</td>
@@ -13936,75 +14334,11 @@ header {
     </tr>
   </tbody>
 </table>
-<p>5 rows × 82 columns</p>
 </div>
 </div>
 
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Explore age</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2018</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;earliest_cr_line&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">18</span> <span class="c1"># Assume earliest credit was obtained at 18 years old</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]);</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -14015,7 +14349,7 @@ header {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/data_cleaned_2016_2017_metrics.csv&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../data/data_cleaned_2016_2017.csv&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14264,16 +14598,16 @@ header {
 <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">10000</span>
 
 <span class="c1"># Downsample majority class</span>
-<span class="n">df_majority_downsampled</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">df_majority</span><span class="p">,</span> 
+<span class="n">df_majority_downsampled</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">df_majority</span><span class="p">,</span>
                                  <span class="n">replace</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>    <span class="c1"># sample without replacement</span>
-                                 <span class="n">n_samples</span> <span class="o">=</span> <span class="n">n_samples</span><span class="p">,</span>   
-                                 <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> 
+                                 <span class="n">n_samples</span> <span class="o">=</span> <span class="n">n_samples</span><span class="p">,</span>
+                                 <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Downsample minority class</span>
-<span class="n">df_minority_downsampled</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">df_minority</span><span class="p">,</span> 
+<span class="n">df_minority_downsampled</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">df_minority</span><span class="p">,</span>
                                  <span class="n">replace</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>    <span class="c1"># sample without replacement</span>
-                                 <span class="n">n_samples</span> <span class="o">=</span> <span class="n">n_samples</span><span class="p">,</span>   
-                                 <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> 
+                                 <span class="n">n_samples</span> <span class="o">=</span> <span class="n">n_samples</span><span class="p">,</span>
+                                 <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Recombine</span>
 <span class="n">df_downsampled</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_majority_downsampled</span><span class="p">,</span> <span class="n">df_minority_downsampled</span><span class="p">])</span>
@@ -14483,7 +14817,7 @@ header {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check with random forest - accuracy seems OK</span>
-<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> 
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span>
                             <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">accuracy_score</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
@@ -14564,7 +14898,7 @@ header {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span>
 </pre></div>
 
     </div>
@@ -14576,7 +14910,7 @@ header {
   </div>
 </body>
 
- 
+
 
 
 </html>
