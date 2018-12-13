@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>EDA</title>
+    <meta charset="utf-8" />
+  <!-- mathjax config similar to math.stackexchange -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        displayAlign: 'center',
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+    </script>
+    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+    <style type="text/css">
+        nav.sitenav ul {
+            list-style: none;
+        }
+
+        nav.sitenav li {
+            display: inline-block;
+            width: 8em;
+            text-align: center;
+        }
+
+        nav.sitenav a {
+            display: block;
+            font-weight: bold;
+        }
+
+        nav.sitenav a:link,
+        nav.sitenav a:visited,
+        nav.sitenav a:hover,
+        nav.sitenav a:active {
+            color: green;
+            text-decoration: none;
+            border-bottom: thin solid transparent;
+        }
+
+        nav.sitenav a:hover {
+            border-bottom: thin solid green;
+        }
+
+        nav.sitenav li.youarehere a {
+            background-color: #cdfecd;
+            border-bottom: thin solid green;
+        }
+
+        section,
+        aside,
+        article,
+        footer {
+            clear: both;
+        }
+
+        footer {
+            border-top: thin solid green;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/unsemantic-grid-responsive-tablet.css"/>
+</head>
+
+<body>
+ <div class="grid-container">
+    <div class="grid-100">
+     <header>
+        <h1>CS109 A - Fall 2018: Project Group 14</h1></header>
+     </div>
+     <div class="grid-100">
+    <nav class="sitenav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+			<li><a href="literature.html">Literature Review</a></li>
+            <li><a href="cleaning.html">Data Cleaning</a></li>
+            <li class="youarehere"><a href="#">EDA</a></li>
+            <li><a href="Model tuning and selection v7.html">Models</a></li>
+            <li><a href="conclusion.html">Conclusion</a></li>
+        </ul>
+    </nav>
+     </div>
+     <div class="grid-50">
+    <article>
+        <h2>EDA</h2>
+            <div class="container first-container">
+                <section>
+                    <h3>Summary of noteworthy findings from the EDA</h3>
+                    <p>Please notice, that additional details on how the cleaned data was processed, including the EDA can be found <a href="data_processing_and_EDA.html" target="_blank">here</a>.
+                    <p>As described on the initial homepage, we are focusing on the dataset from 2016 and 2017. That dataset has about 90 predictors and 334,000 observations. The ratio of “Fully paid” to “Charged off” loans in the original set is about 3:1 which makes it somewhat imbalanced. We will consider that by balancing the data for the modelling process. </p>
+                    <p>
+                    For the purposes of EDA, however, we kept the original dataset. We ran a correlation analysis to see which predictors correlate and we also ran several modelling algorithms (LassoCV, Decision Tree and Random Forest) that would help us find the most significant predictors in the dataset. Below are some examples of the most important predictors that had a higher impact on the target variable <b>loan status</b>:
+                    <ul>
+                    <li>Interest Rate</li>
+                    <li>Sub Grade (a rating that Lending Club assigned to the loan)</li>
+                    <li>Average Current Balance (of all accounts)</li>
+                    <li>FiCo score (the borrower’s credit score)</li>
+                    <li>Dti (the debt to income ratio)</li>
+                    <li>Installment (the monthly payment owed by the borrower if the loan originates)</li>
+                    <li>Employment length (in years)</li>
+                    <li>Term (36 or 60 months)</li>
+                    <li>Revolving line utilization rate (the amount of credit the borrower is using relative to all available revolving credit)</li>
+                    <li>Loan amount</li>
+                    <li>Annual income</li>
+                    <li>Home ownership</li>
+                    </ul>
+                    </p>
+                </section>
+                <section>
+                    <h4>Loan Amount</h4>
+                    <p>When we look at the distribution of the loan amount, it shows a preference for requesting values in 5k steps, such as 5k, 10k, 15k, 20k, 35k etc. Most loans are relatively smaller amounts: 50% of all loans are below <span>&#36;</span> 12,500 and 75% below <span>&#36;</span> 20,000</p>
+                    <p><img alt="image9" src="images/image9.png" class="img-fluid img-thumbnail rounded" width=40% /></p>
+                    <p><img alt="image6" src="images/image6.png" class="img-fluid img-thumbnail rounded" width=10% /></p>
+                </section>
+                <section>
+                    <h4>Loan risk (i.e. grades/ratings and interest rates)</h4>
+                    <p>When looking at the loan risk (expressed as sub grades), the grades go from A1 (highest/best) to G5 (lowest/worst). We can see a trend that looks like smaller loan amounts are usually rated as a lower risk and larger loans are usually rated riskier, which makes sense.</p>
+                    <p><img alt="image7" src="images/image7.png" class="img-fluid img-thumbnail rounded" width=40% /></p>
+                    <p>As far as the default by grade goes, it seems that grades A and B are fairly “safe” because the majority of loans in these classes are paid off; however, anything lower than a D (i.e. riskier grade) has a risk of 63-77% of defaulting.</p>
+                    <p><img alt="image1" src="images/image1.png" class="img-fluid img-thumbnail rounded" width=30% /></p>
+                    <p>Interest rates are higher for lower sub grades, which also makes sense, since the interest rate reflects a measurement of risk and so does the sub grade.</p>
+                    <p><img alt="image3" src="images/image3.png" class="img-fluid img-thumbnail rounded" width=40% /></p>
+                    <p>This also seems to be confirmed when looking at the rate of defaulted loans by interest rate. The higher the interest rate, the more likely that a loan is going to default (see below).</p>
+                    <p><img alt="image8" src="images/image8.png" class="img-fluid img-thumbnail rounded" width=40% /></p>
+                </section>
+                <section>
+                    <h4>Loans by States</h4>
+                    <p>We can also show that almost 40% of all loans were made in only the top four States: CA, TX, NY and FL.</p>
+                    <p><img alt="image4" src="images/image4.png" class="img-fluid img-thumbnail rounded" width=30% /></p>
+                    <p>When looking at the average annual incomes, three of these States (CA, NY and TX) are in the top 10, but FL is on rank 27. This leaves the question as to why there have been so many loans in FL?</p>
+                    <p><img alt="image10" src="images/image10.png" class="img-fluid img-thumbnail rounded" width=25% /></p>
+                    <p>Since 40% of all loans were made in the top four States, we would naturally expect those to have the highest absolute numbers of defaults too. However, we can also look at which States have a higher default rate than the national average of 23.64%. This shows that especially some States in the South like AR, LA, MS and AL are at the top of the list.</p>
+                    <p><img alt="image2" src="images/image2.png" class="img-fluid img-thumbnail rounded" width=20% /></p>
+                </section>
+                <section>
+                    <h4>Loan Purpose</h4>
+                    <p>Another interesting aspect we looked at was the defaulted loans by loan purpose and/or by loan grade. We know that our "base charged off rate", meaning the % of all charged off loans over all loans made in 2016-2017 is 23.64%. This means all loan purposes that show a higher percentage in the table below, are probably at a higher risk than average to default. In this case that is <b>dept_collection, medical, moving, renewable_energy, small_business and other.</b></p>
+                    <p><img alt="image5" src="images/image5.png" class="img-fluid img-thumbnail rounded" width=25% /></p>
+                </section>
+                <section>
+    			<h3>Intermediate conclusions from the EDA and literature review</h3>
+    			<p>The EDA and literature review indicated that we need to take some additional steps to pre-process the data and construct useful models. </p>
+    			<p>Firstly, the classes are imbalanced, with the majority (around three-quarters) of loans being fully paid. Having imbalanced data may give a false impression of the performance of the model, and can negatively affect the performance of some learning algorithms such as logistic regression. <b>We will therefore balance the training data by resampling to achieve a 50:50 split between the target classes.</b></p>
+    			<p>Secondly, the cost of a false positive is high in this particular example - i.e. the cost of a defaut is much greater (where the investor can potentially lose all the invested money), compared to the potential upside of making a successful loan (where the investor will gain the interest rate on repayments). This means that accuracy is not the best metric and we want to focus on limiting the number of false positives as much as possible. <b>Therefore, we will use a selection of metrics other than accuracy. These include: precision, recall, F1_score, and AUC (area under the ROC curve).</b> These are explained further when developing the functions in the modelling approach.
+    			</p>
+    			<p>Lastly we plan to explore various metrics of fairness to test whether the outcomes of the algorithms lead to different results for protected vs unprotected classes. These metrics include equal opportunity, predictive equality and statistical parity. Again, these are explained in more detail in the modelling approach. We have chosen to implement these metrics as direct calculations. </p>
+    			<p>However, there are limitations in such metrics. For instance, they should be used in allocation of risk assessment problems with well-defined protected attributes, in which one would like to have some sort of statistical or mathematical notion of sameness. We will need to ensure that we do not create biases where there are none, or just by assuming different groups are reflected differently in the dataset.</p>
+    		   </section>
+               <section>
+       		          <h3>Baseline model</h3>
+       		             <p>As mentioned above, the dataset will be rebalanced to contain balanced classes. For the most simple baseline model, if a model simply assumes that all loans are fully paid, it will achieve 50% precision. This is our initial baseline.</p>
+       		   </section>
+            </div>
+
+    </article>
+     </div>
+    </div>
+</body>
+
+</html>

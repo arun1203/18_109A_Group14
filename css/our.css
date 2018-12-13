@@ -1,0 +1,41 @@
+h1, h2, h3, h4, h6 p {
+    text-align: left;
+}
+
+h4 {
+    color: darkblue;
+}
+.h4-team {
+    text-align: left;
+}
+
+.my_lightblue_color {
+    background-color: #ebf5fa
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background-color: #eee;
+}
+
+.first-container {
+    padding-top: 80px;
+}
+
+a:visited {
+    color: darkred;
+}
+
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    text-align: center;
+}
+
+.navbar .navbar-collapse {
+    text-align: right;
+}
