@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Models</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mathjax config similar to math.stackexchange -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$']],
+          processEscapes: true,
+          displayAlign: 'center',
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        });
+    </script>
+    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/our.css" />
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-md bg-info navbar-dark fixed-top">
+            <a class="navbar-brand mx-auto" href="index.html">Lending Club</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Project Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cleaning.html">Data Cleaning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="eda.html">EDA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="models.html">Modelling</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="literature.html">Literature Review</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="conclusion.html">Conclusion</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+        <div class="container first-container">
+            <h4>Data Modelling</h4>
+            <p>Please notice, that additional details on modelling can be found <a href="Model tuning and selection v7.html" target="_blank">here</a>.</p>
+            <p>After reading in the data and doing some additional cleaning (removing columns) and preparing the data for modelling (e.g. encoding binary columns, stripping xx from zip codes, etc) and adjusting the data for skewed variables, we split the data into a training and test data set.</p>
+            <p>In the initial data set our target variable <b>loan_status</b> was fairly unbalanced (about 3/4 of the data was "fully paid" and only 1/4 "charged off"). This would've caused misleading assessment of model performance. We therefore resampled the classes to achieve balanced classes in the training set. For the initial stages, we also took the opportunity to reduce the dataset size in the initial stages, so that different model specifications could be tested faster.  </p>
+            <p>Since we will be using models that are sensitive to scale, we need to scale the data as well. The unscaled features <i>interest_rate</i> and <i>earliest_cr_line</i> are extracted for use in later custom metrics.</p>
+            <p>We did another quick look at the data and can now see that some southern states have higher charge off rates than the rest of the states.</p>
+            <p><img alt="image17" src="images/image17.png" class="img-fluid img-thumbnail rounded" width=70% /></p>
+
+            <h4>Overview of performance metrics used for tuning hyperparameters</h4>
+            <p>We explored several performance metrics to be used in our project. Since the cost of a false positive is relatively high, this needs to be accounted for when choosing the best model, while still aiming for a good overall performance. For the purposes of this project, we consider several metrics:
+            <ul>
+                <li><b>Precision</b> = True positive / (True positive + False positive). Precision represents how precise the model is in predicting positive values, and is a good metric to use when the cost of false positives is high, as in our case.</li>
+                <li><b>Recall</b> = True positive / (True positive + False negative). Recall represents how many of the actual positives were correctly picked up by the model. It is important to use when the cost of false negatives is high.</li>
+                <li><b>F1 score</b> = harmonic mean of precision and recall. There is typically a trade-off between precision and recall and F1 therefore seeks to create a balance between these two metrics.</li>
+                <li><b>ROC</b> = The ROC plots the true positive rate (sensitivity) against the false positive rate (1-specificity) and therefore shows the trade-offs between the two.</li>
+                <li><b>AUC</b> = Area under the ROC curve. The AUC for a classifier with no power (random guessing) is 0.5. If the AUC is 0.7, it means there is 70% chance that model will be able to distinguish between positive class and negative class.</li>
+            </ul></p>
+            <p>For tuning the hyperparameters, the primary metric we used for refitting was AUC. However, other metrics were also used to check overall performance in the visual analysis using graphs. The section below shows a subset of the models and performance metric graphs that were investigated in the project.</p>
+        </div>
+        <div class="container">
+            <h4>Model tuning - Find the best model of each type</h4>
+            <p>We then tried to develop a process to search through a grid of tuning parameters using some wrapper functions shown in <a href="Model tuning and selection v7.html" target="_blank">the notebook</a> and return the best models. After comparing the models, we noticed that the different classifiers do not perform that differently (at least for the parameters tried so far).</p>
+            <p><img alt="image18" src="images/image18.png" class="img-fluid img-thumbnail rounded" width=50% /></p>
+        </div>
+        <div class="container">
+            <h4>Important features</h4>
+            <p>A comparison of the feature importance for the <b>random forest and gradient boosting</b> shows that they are selecting similar features in the top 10, although with slightly different weights/ordering.</p>
+            <p>If an investor were to decide to invest their money in LendigClub, some of the most important features to consider when doing so, would be variables like the ones below, which resulted from running for example a random forest and gradient boosting calculation and looking at the relative importance of the features:</p>
+            <p><img alt="image11" src="images/image11.png" class="img-fluid img-thumbnail rounded" width=65% /></p>
+            <p>Those features will become the underlying characteristics that drive the investment strategy, which can be found on our <a href="conclusion.html">conclusions</a> page.</p>
+        </div>
+    <footer>
+        <div class="container">
+            <hr class="my-4">
+            <p>Project Group 14 <br> Gena Gibson, Roland Schiebel, Oyvind Dale Sporck, Arun Reddy
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

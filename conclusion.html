@@ -42,7 +42,7 @@
                         <a class="nav-link" href="eda.html">EDA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Model tuning and selection v7.html">Modelling</a>
+                        <a class="nav-link" href="models.html">Modelling</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="literature.html">Literature Review</a>
@@ -57,16 +57,13 @@
     <section>
         <div class="container first-container">
             <h3>Conclusion</h3>
-            <p>Considering we have only looked at the 2016 - 2017 data and due to the reasons explained in our <a href="index.html">initial project approach</a>, we arrived at the following conclusions:</p>
-
-            <h4>Important investment features</h4>
-            <p>If an investor were to decide to invest their money in LendigClub, some of the most important features to consider when doing so, would be variables like the ones below, which resulted from running for example a random forest and gradient boosting calculation and looking at the relative importance of the features:</p>
-            <p><img alt="image11" src="images/image11.png" class="img-fluid img-thumbnail rounded" width=65% /></p>
-
+            <p>Considering we have only looked at the 2016 - 2017 data and due to the reasons explained in our <a href="index.html">initial project approach</a>, we arrived at the following conclusions on investment strategies and fairness metrics:</p>
+        </div>
+        <div class="container">
             <h4>Investment strategies</h4>
             <p>From the calculations under <a href="Model tuning and selection v7.html" target="_blank">"Expected Returns"</a> we can observe several interesting things. For instance...</p>
 
-            <p>If a potential investor were to invest <b>$100</b> in every one of the roughly 334,000 loans we looked at, he would <b>lose money</b> overall, mostly due to the loans with <b>high interest rates</b> (higher than 10%). See image below.
+            <p>If a potential investor were to invest <b>$100</b> in every one of the roughly 334,000 loans we looked at, he would <b>lose money</b> overall, mostly due to the loans with <b>high interest rates</b> (higher than 10%) unless he invests in loans which only pay back less than 10%.
             </p>
             <p><img alt="image12" src="images/image12.png" class="img-fluid img-thumbnail rounded" width=70% /></p>
             <p>
@@ -105,7 +102,8 @@
             <p><img alt="image14" src="images/image14.png" class="img-fluid img-thumbnail rounded" width=70% /></p>
             <p><img alt="image15" src="images/image15.png" class="img-fluid img-thumbnail rounded" width=70% /></p>
             <p><img alt="image16" src="images/image16.png" class="img-fluid img-thumbnail rounded" width=70% /></p>
-
+        </div>
+        <div class="container">
             <h4>Fairness metrics</h4>
             We implemented a selection of the fairness metrics from the IBM algorithm directly, which include the following metrics for each model:
             <ul>
@@ -127,7 +125,8 @@
             When using data from the US census and aggregating the information up to the 3 first digits of the zip-code, to be compatable with the Lending Club data, we would have additional information about what percentage of the population in that zip-code area is black or any other race.
             If our model were to reject loans from zip-code xyz and that area has a higher percentage of black population compared to the state or country, this could be considered discrimination.</p>
             <p>This shows that there is a <b>tiny racial bias</b> in our model. However, due to the limitations in the dataset, with only the three first digits of the zip-code available, the accuracy is not that good. As these zip-areas are very large, and hence very diverse, that makes it harder to test for bias. Many of these zip-areas include some of Americas poorest areas, but at the same time they include areas with high levels of income, percentage of graduate level degrees and so forth. Hence there are a chance that some zip-codes within these areas are discriminated against, while other zip-codes (areas) are treated positively. But with the lack of granularity in our data, it is not possible to conclude.</p>
-
+        </div>
+        <div class="container">
             <h4>Further work</h4>
             <p>There are several ideas we've discussed to further detail our work but due to the limited time and resources was not done in this project.</p>
             <ul>
