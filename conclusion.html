@@ -85,12 +85,18 @@
 
                 <li>The investor who invested 100 USD in top 1000 loans according to our model will need to invest \$41,837 overall and would end up with a profit of $3,920 on December 31th 2018, which equals 9.4%</li>
             </ul>
-                <p>Now, even though it looks like strategy 1 loses less percentage wise than strategy 2, the first investor would've had to invest almost 355 times more money than the second, which is quite significant. If that second investor invested the same amount the first one invested but in our 1000 best loans, that investor would end up with a profit of $1,391,140 on December 31th 2018.</p>
+            <p>Now, even though it looks like strategy 1 loses less percentage wise than strategy 2, the first investor would've had to invest almost 355 times more money than the second, which is quite significant. If that second investor invested the same amount the first one invested but in our 1000 best loans, that investor would end up with a profit of $1,391,140 on December 31th 2018.</p>
 
-                <p>Please find more details on these calculation at the end of our <a href="Model tuning and selection v7.html" target="_blank">models notebook</a>.</p>
+            <h5>Compound interest and paybacks</h5>
+            <p>The reason why some of these numbers may look a little unintuitive and let's say \$100 * 1000 loans is not equal to \$100,000 is because the loans are issued on different dates. So if you invest in 1000 loans, that should be about 75 loans each month (since we just have 'Fully paid' or 'Charged off', the loans that are issued towards the end of the 2 year period are filtered out). So in January 2016, you invest in \$100 * 75. In February, you invest in another 100 * 75 = 7500 and so forth. But, already in February, some of the first loans get paid back and you receive some interest as well as some installments. Therefore at the end of January, you have already received some of those first \$7,500 back. Then you invest another 7500 in February. But in February, you receive even more of the January money back and some of the February-loans gets paid back. So at the end of February, you might have gotten \$2,000 back. So, you're currently invested with 2x7500 - 2000. Therefore you are just invested with a net amount of \$13,000 before the 7500 investment goes out in March.
+            </p>
+            <h5><u>Takeaway</u></h5>
+            <p>As we can see from the above calculations, when comparing our model of investing in the top 1000 loans as opposed to random investments, the model is making a profit of <b>9.4%</b> whereas random investments are losing 13.4% and 9.1%.</p>
+            <p>Please find more details on these calculation at the end of our <a href="Model tuning and selection v7.html" target="_blank">models notebook</a>.</p>
 
-                <p>The reason why some of these numbers may look a little unintuitive and let's say \$100 * 1000 loans is not equal to $100,000 is because the loans are issued on different dates. So if you invest in 1000 loans, that should be about 75 loans each month (since we just have 'Fully paid' or 'Charged off', the loans that are issued towards the end of the 2 year period are filtered out). So in January 2016, you invest in $100 * 75. In February, you invest in another 100 * 75 = 7500 and so forth. But, already in February, some of the first loans get paid back. And you receive some interest as well as some installments. Therefore at the end of January, you have already received some of those first $7,500 back. Then you invest another 7500 in February. But in February, you receive even more of the January money back and some of the February-loans gets paid back. So at the end of February, you might have gotten $2,000 back. So, you're currently invested with 2x7500 - 2000. Therefore you are just invested with a net amount of $13,000 before the 7500 investment goes out in March</p>
-
+        </div>
+        <div class="container">
+            <h4>Cash-Flow</h4>
             <p>On top of that, we did some calculations on the investor's Cash-Flow across the 2017 - 2018 timeframe. The graphs will show how the cash-flow is spread out over that timeframe. As one can see, the investor needs to put out an outlay at first but will then gradually receive money back as interest and installments accrue, as well as when loans gets paid back.</p>
 
             However, there are some limitations in the dataset that required us to make a few assumptions:
